@@ -3,7 +3,7 @@
 snowball::snowball(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f)
 	: particleModel(pos, vel, acc, mov, mas, f)
 {
-	setShape2Square();
+	setShape2Square(mas);
 }
 
 snowball::~snowball()
@@ -11,12 +11,12 @@ snowball::~snowball()
 
 }
 
-void snowball::setShape2Square()
+void snowball::setShape2Square(float m)
 {
     shape[0].x = 0.0F;	shape[0].y = 0.0F;
-    shape[1].x = 5.0F;	shape[1].y = 0.0F;
-    shape[2].x = 5.0F;	shape[2].y = 5.0F;
-    shape[3].x = 0.0F;	shape[3].y = 5.0F;
+    shape[1].x = m + 1;	shape[1].y = 0.0F;
+    shape[2].x = m + 1;	shape[2].y = m + 1;
+    shape[3].x = 0.0F;	shape[3].y = m + 1;
 }
 
 void snowball::checkSnow()
@@ -28,15 +28,15 @@ void snowball::checkSnow()
 		resetParticle();
 		setAccX(0);
 		setAccY(0);
-		setVel(0, 1);
+		setVelY(1);
 	}
 
-	if(p.x >= VIEWPORT_RIGHT -10)
+	if(p.x >= VIEWPORT_RIGHT)
 	{
 
 	}
 
-	if(p.x <= VIEWPORT_LEFT )
+	if(p.x + 5 <= VIEWPORT_LEFT)
 	{
 
 	}

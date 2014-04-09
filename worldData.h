@@ -54,7 +54,6 @@ class WorldData
 		//snow
 		void	startSnow();
 		void	stopSnow();
-		void	toggleSnow();
 		void	setSnowing(bool b)
 		{
 			isSnowing = true;
@@ -64,6 +63,9 @@ class WorldData
 			return isSnowing;
 		}
 
+		//wind
+		void	windLeft();
+		void	windRight();
 };
 
 #endif /* _WORLDDATA_H */

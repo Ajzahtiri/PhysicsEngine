@@ -1,23 +1,7 @@
-/*
- * File name:	worldData.cpp
- * Description:	World data module.
- *
- * Author: 			Claude C. Chibelushi
- * Date:			04/10/04
- *					Modified 27/09/06, by CCC: addition of function for setting object shape
- *					Modified 19/01/09 by CCC: porting to C++
- *							 06/02/09 by CCC: additional functionality required  
- *                           for illustrative examples of GDI drawing functionality.
- *
- */
- 
-
 #include "worldData.h"
 #include "particleModel.h"
 #include "snowball.h"
 #include "definitions.h"
-
-GraphicsM gm;
 
 WorldData::WorldData()
 {
@@ -32,9 +16,9 @@ WorldData::WorldData()
 	for (int i = 0; i < 1000; i++)
 	{
 		Point2D sp;
-		int x = rand() % ((VIEWPORT_RIGHT * 2) + 1);
-		int y = rand() % (VIEWPORT_DOWN + 1);
-		sp.x = x - VIEWPORT_RIGHT / 2;
+		int x = rand() % (VIEWPORT_RIGHT + (VIEWPORT_RIGHT / 2)) + (0 - (VIEWPORT_RIGHT / 2));
+		int y = rand() % VIEWPORT_DOWN + 1;
+		sp.x = x;
 		sp.y = y - VIEWPORT_DOWN - 10;
 
 		float mass = rand() % 4 + 1;
@@ -51,15 +35,8 @@ WorldData::WorldData()
 int WorldData::worldDataModuleInit()
 {	
 	tickBefore = GetTickCount();
-	std::list<snowball>::iterator s = snowfall.begin();
 
-	while (s != snowfall.end())
-	{
-		s->setShape2Square();
-		s++;
-	}
-
-	return 1;	
+	return 1;
 }
 
 WorldData::~WorldData()
@@ -99,7 +76,33 @@ void WorldData::stopSnow()
 		s++;
 	}
 }
-		
+
+void WorldData::windLeft()
+{
+	std::list<snowball>::iterator s = snowfall.begin();
+	while(s != snowfall.end())
+	{
+		if (s->getMoving() == true)
+		{
+			s->setForceX(-25);
+		}
+		s++;
+	}
+}
+
+void WorldData::windRight()
+{
+	std::list<snowball>::iterator s = snowfall.begin();
+	while(s != snowfall.end())
+	{
+		if (s->getMoving() == true)
+		{
+			s->setForceX(25);
+		}
+		s++;
+	}
+}
+
 int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 {
 	double tickNow = GetTickCount();
@@ -131,6 +134,12 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		break;
 	case X:
 		stopSnow();
+		break;
+	case C:
+		windLeft();
+		break;
+	case V:
+		windRight();
 		break;
 	default:
 		break;

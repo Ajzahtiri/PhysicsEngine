@@ -22,7 +22,7 @@ class snowball : public particleModel
 		snowball(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
 		~snowball();
 		
-		void setShape2Square();
+		void setShape2Square(float m);
 		void checkSnow();
 
 		int update(keyEvent ke, GraphicsM * pGraphicsModule, float time);
