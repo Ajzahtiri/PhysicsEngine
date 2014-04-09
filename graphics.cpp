@@ -64,32 +64,52 @@ int GraphicsM::displayBackBuffer(HWND hWnd)
 	}
 
 int GraphicsM::drawHUD()
-	{
-	/* GDI variables */
-	HGDIOBJ		hPreviousBrush;		// handle for previous brush
+{
+	HGDIOBJ		hpb;				// handle for previous brush
 	HBRUSH		hBlueBrush;			// handle for blue custom brush
 	HBRUSH		hWhiteBrush;		// handle for white custom brush
-
-	/* TO DO: add relevant code */
+	POINT		groundShape[10];	
 
 	// sky (blue colour)
 	hBlueBrush = CreateSolidBrush(RGB(0,192,255));	// blue brush
-	hPreviousBrush = SelectObject(hMdc, hBlueBrush);
+	hpb = SelectObject(hMdc, hBlueBrush);
 	Rectangle(hMdc, viewport.left, viewport.top, viewport.right, viewport.bottom);
-	SelectObject(hMdc, hPreviousBrush);	// restore previous brush
-    // free resources which are no longer needed
+	SelectObject(hMdc, hpb);
     DeleteObject(hBlueBrush);
 
-	// ground (brown colour)
+	// ground (white colour)
 	hWhiteBrush = CreateSolidBrush(RGB(255, 255, 255));
-	hPreviousBrush = SelectObject(hMdc, hWhiteBrush);
-	Rectangle(hMdc, viewport.left, viewport.bottom - 40, viewport.right, viewport.bottom);
-	SelectObject(hMdc, hPreviousBrush);	// restore previous brush
-    // free resources which are no longer needed
+	hpb = SelectObject(hMdc, hWhiteBrush);
+	Rectangle(hMdc, viewport.left, viewport.bottom - 10, viewport.right, viewport.bottom);
+	SelectObject(hMdc, hpb);	
+
+	groundShape[0].x = 0;
+	groundShape[0].y = VIEWPORT_DOWN - 20;
+	groundShape[1].x = 100;
+	groundShape[1].y = VIEWPORT_DOWN - 20;
+	groundShape[2].x = 180;
+	groundShape[2].y = VIEWPORT_DOWN - 120;
+	groundShape[3].x = 260;
+	groundShape[3].y = VIEWPORT_DOWN - 120;
+	groundShape[4].x = 290;
+	groundShape[4].y = VIEWPORT_DOWN - 80;
+	groundShape[5].x = 460;
+	groundShape[5].y = VIEWPORT_DOWN - 80;
+	groundShape[6].x = 530;
+	groundShape[6].y = VIEWPORT_DOWN - 180;
+	groundShape[7].x = VIEWPORT_RIGHT;
+	groundShape[7].y = VIEWPORT_DOWN - 180;
+	groundShape[8].x = VIEWPORT_RIGHT;
+	groundShape[8].y = VIEWPORT_DOWN;
+	groundShape[9].x = VIEWPORT_LEFT;
+	groundShape[9].y = VIEWPORT_DOWN;
+
+	Polygon(hMdc, groundShape, 10);
+
     DeleteObject(hWhiteBrush);
 
 	return 1;
-	}
+}
 
 
 /*
