@@ -33,10 +33,10 @@ report:
 misc:
     data structures                   10
     collision detection               5     ✔✔✔✔✔
-    inclusion of force (wind, drag)   10
+    inclusion of force (wind, drag)   10    ✔✔✔✔✔
     game like systems                 20
     other (graphics/threads)          10
-    total                             5/20
+    total                             15/20
     
-    total                             11/100
+    total                             21/100
     
