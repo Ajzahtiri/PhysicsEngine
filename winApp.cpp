@@ -152,12 +152,12 @@ HWND fnCreateWindow(HINSTANCE hThisAppInstance)
    return CreateWindow
    						(
                      szWinName,						/* window class name */
-                     "PPAIEG Tutorials",				/* window title */
-                     WS_POPUP | WS_VISIBLE,			/* window style: normal */
+                     "Aaron Austin-Lacy Physics/AI Assignment",				/* window title */
+                     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_POPUPWINDOW,			/* window style: normal */
                      0,								/* x coordinate (top left corner) */
                      0,								/* Y coordinate (top left corner) */
-                     GetSystemMetrics(SM_CXSCREEN),	/* window width */
-                     GetSystemMetrics(SM_CYSCREEN),	/* window height */
+					 VIEWPORT_RIGHT,	/* window width */
+                     VIEWPORT_DOWN + 40,	/* window height */
                      HWND_DESKTOP /* NULL */ ,		/* no parent window */
                      NULL,                      	/* no menu or child-window */
                      hThisAppInstance,				/* handle of this instance of application */

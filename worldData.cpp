@@ -34,8 +34,8 @@ WorldData::WorldData()
 
 	//setup buggy
 	Point2D tp;
-	tp.x = 500;
-	tp.y = 450;
+	tp.x = 400;
+	tp.y = VIEWPORT_DOWN - 80;
 	t = new buggy(tp);
 
 }
