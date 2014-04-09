@@ -146,6 +146,9 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 		s->draw(pGraphicsModule);
 		s++;
 	}
+
+	pGraphicsModule->drawText();
+
 	return 1;
 }
 

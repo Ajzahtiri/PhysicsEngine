@@ -2,79 +2,36 @@
 #include		"definitions.h"
 
 GraphicsM::GraphicsM()
-	{
-	/* TO DO: add relevant code */
+{
+			
+}
 
-	return;			
-	}
-
-/*
-	Destructs graphics module
-
-	Parameter list
-		none
- */
 GraphicsM::~GraphicsM()
-	{
-	/* TO DO: add relevant code */
-
+{
 	graphicsCleanUp();
-
 	return;			
-	}
+}
 
-
-/*
-	Initialises the graphics module.
-
-	Parameter list
-		hWnd:			handle of window
- */
 int GraphicsM::graphicsModuleInit(HWND hWnd)
-	{
-	/* TO DO: add relevant code */
-	
-
-	/* Set viewport */
+{
 	setViewport();
-
-	/* Initialise back buffer */
 	initMemDC(hWnd);
-
 	return 1;
-	}
+}
 
-
-/*
-	Sets the viewport.
-
-	Parameter list
-		none.
- */
 int GraphicsM::setViewport()
-	{
-	/* TO DO: add relevant code */
-	
-	/* Set viewport */
-		viewport.left = 0; viewport.top = 0; viewport.right = VIEWPORT_RIGHT; viewport.bottom = VIEWPORT_DOWN;
-	
+{	
+	viewport.left = 0; viewport.top = 0; viewport.right = VIEWPORT_RIGHT; viewport.bottom = VIEWPORT_DOWN;	
 	return 1;
-	}
+}
 
 RECT GraphicsM::getViewport()
 {
 	return viewport;
 }
 
-
-/*
-	Initialises the memory device context (i.e. back buffer for double buffering)
-
-	Parameter list
-		hWnd:			handle of window
- */
 void GraphicsM::initMemDC(HWND hWnd)
-	{
+{
 	HBITMAP		hBitMap;					/* handle to bitmap */
 	HDC			hdc = GetDC(hWnd); 			/* get handle to device context */
 
@@ -90,38 +47,13 @@ void GraphicsM::initMemDC(HWND hWnd)
         					of bitmap-buffer by setting bitmap to background colour of window */
 
 	ReleaseDC(hWnd, hdc); 					/* release device context */
-	}
+}
 
-
-/*
- Releases graphics objects
-
- Parameter list
- 	none
- */
 void GraphicsM::graphicsCleanUp()
 {
-	/* TO DO: add relevant code */
-
-
 	return;
 }
 
-
-
-/*----------------------------------------------------------------------------\
- *                                                                            |
- *					     		GRAPHICS RENDERING 	                   		  |
- *                                                                            |
- *----------------------------------------------------------------------------*/
-
-	
-/*
- Displays the back buffer.
-		  
- Parameter list
-	hWnd:			handle of window
- */
 int GraphicsM::displayBackBuffer(HWND hWnd)
 	{
 	HDC         	hdc ;			/* handle to device context */
@@ -137,14 +69,6 @@ int GraphicsM::displayBackBuffer(HWND hWnd)
 	return 1;
 	}
 
-
-
-/*
-  Draws a basic HUD.
-
-  Parameter list
-	 none
-  */
 int GraphicsM::drawHUD()
 	{
 	/* GDI variables */
@@ -183,7 +107,7 @@ int GraphicsM::drawHUD()
 		closed        flag indicating whether polygon is closed or not.
   */
 int GraphicsM::drawPolygon(Point2D polygon[], int vertexCount, bool closed)
-    {
+{
 	/* display polygon */
 	// draw outline shape using current pen
 	MoveToEx(hMdc, (int)(polygon[0].x + 0.5), (int)(polygon[0].y + 0.5), NULL);
@@ -194,5 +118,21 @@ int GraphicsM::drawPolygon(Point2D polygon[], int vertexCount, bool closed)
 		LineTo(hMdc, (int)(polygon[0].x + 0.5), (int)(polygon[0].y + 0.5));
 
 	return 1;
-    }
+}
+
+int GraphicsM::drawText()
+{
+	RECT tr1;
+	tr1.left = 10;
+	tr1.top = 10;
+	tr1.right = 100;
+	tr1.bottom = 100;
+
+	SetTextColor(hMdc, 0x0000000);
+	SetBkMode(hMdc, TRANSPARENT);
+
+	DrawText(hMdc, "Z - Reset Snow | X - Start Snow", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
+
+	return 1;
+}
 

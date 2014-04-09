@@ -34,6 +34,8 @@ class GraphicsM
 		int		drawHUD();							// Draw a basic HUD
    		int		drawPolygon(Point2D polygon[], int vertexCount, bool closed);	// Draw a polygon
 		int		displayBackBuffer(HWND hWnd);		// display backBuffer
+		
+		int		drawText();
 
 	};
 
