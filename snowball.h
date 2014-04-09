@@ -20,7 +20,7 @@ class snowball : public particleModel
 
 	public:
 		snowball(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
-		~snowball();
+		~snowball(){};
 		
 		void setShape2Square(float m);
 		void checkSnow();

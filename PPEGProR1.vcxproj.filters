@@ -39,6 +39,9 @@
     <ClCompile Include="snowball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="buggy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataTypes.h">
@@ -69,6 +72,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snowball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="swarm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="swarmee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buggy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

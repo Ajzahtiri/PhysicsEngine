@@ -12,17 +12,14 @@ class GraphicsM
 	{
 
 	protected:
-
 		HDC hMdc;					/* handle for device context of back buffer */
 		int	backBufWidth;			/* width of back buffer */
 		int	backBufHeight;			/* height of back buffer */
 		RECT viewport;				/* display viewport */
 
 	public:
-
-		// Constructor and destructor
 		GraphicsM();
-		~GraphicsM();
+		~GraphicsM(){};
 
 		void	initMemDC(HWND hWnd);				// Initialise the memory device context (for double buffering)
 		int		graphicsModuleInit(HWND hWnd);		// Initialise the graphics module
@@ -36,6 +33,7 @@ class GraphicsM
 		int		displayBackBuffer(HWND hWnd);		// display backBuffer
 		
 		int		drawText();
+		int		drawBuggy(Point2D tp);
 
 	};
 

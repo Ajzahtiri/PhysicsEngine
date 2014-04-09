@@ -5,11 +5,6 @@ Input::Input()
 
 }
 
-Input::~Input()
-{	
-
-}
-
 keyEvent Input::checkUserInput(HWND hWnd)
 {
 	keyEvent event;
@@ -58,6 +53,16 @@ keyEvent Input::checkUserInput(HWND hWnd)
 	else if (IS_KEY_DOWN(0x56))
 	{
 		event = V;
+	}
+
+	else if (IS_KEY_DOWN(0x41))
+	{
+		event = A;
+	}
+
+	else if (IS_KEY_DOWN(0x44))
+	{
+		event = D;
 	}
 
 	else 

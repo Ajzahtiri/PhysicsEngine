@@ -28,7 +28,7 @@ class Simulation
 
 		// Constructor and destructor
 		Simulation();
-		~Simulation();
+		~Simulation(){};
 
 		// Simulation entry point
 		int simMain(HWND hWnd, MSG * msg);

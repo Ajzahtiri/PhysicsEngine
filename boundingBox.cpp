@@ -5,10 +5,6 @@ boundingBox::boundingBox()
 
 }
 
-boundingBox::~boundingBox()
-{
-
-}
 
 void boundingBox::initBox(float xx, float yy, float w, float h)
 {

@@ -144,6 +144,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="buggy.cpp" />
     <ClCompile Include="winApp.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
@@ -162,6 +163,9 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="particleModel.h" />
     <ClInclude Include="simulation.h" />
+    <ClInclude Include="swarm.h" />
+    <ClInclude Include="swarmee.h" />
+    <ClInclude Include="buggy.h" />
     <ClInclude Include="winApp.h" />
     <ClInclude Include="worldData.h" />
   </ItemGroup>

@@ -6,12 +6,6 @@ GraphicsM::GraphicsM()
 			
 }
 
-GraphicsM::~GraphicsM()
-{
-	graphicsCleanUp();
-	return;			
-}
-
 int GraphicsM::graphicsModuleInit(HWND hWnd)
 {
 	setViewport();
@@ -123,16 +117,58 @@ int GraphicsM::drawPolygon(Point2D polygon[], int vertexCount, bool closed)
 int GraphicsM::drawText()
 {
 	RECT tr1;
+	RECT tr2;
 	tr1.left = 10;
 	tr1.top = 10;
 	tr1.right = 100;
 	tr1.bottom = 100;
+	tr2.left = 10;
+	tr2.top = 30;
+	tr2.right = 100;
+	tr2.bottom = 100;
 
 	SetTextColor(hMdc, 0x0000000);
 	SetBkMode(hMdc, TRANSPARENT);
 
-	DrawText(hMdc, "Z - Start Snow | X - Stop Snow | C - Left Wind | V - Right Wind", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
+	DrawText(hMdc, "A - Buggy Left | D Buggy Right", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
+	DrawText(hMdc, "Z - Start Snow | X - Stop Snow | C - Left Wind | V - Right Wind", -1, &tr2, DT_SINGLELINE | DT_NOCLIP);
 
 	return 1;
 }
+
+int GraphicsM::drawBuggy(Point2D tp)
+{
+	HGDIOBJ		hpb;	
+	
+	HBRUSH		bodyB;
+	HBRUSH		wheel1B;
+	HBRUSH		wheel2B;
+
+	// left - top - right - bottom
+	bodyB = CreateSolidBrush(RGB(255, 204, 204));	
+	hpb = SelectObject(hMdc, bodyB);
+	Rectangle(hMdc, tp.x, tp.y - 25, tp.x + 40, tp.y - 1);
+	SelectObject(hMdc, hpb);
+    DeleteObject(bodyB);
+
+	wheel1B = CreateSolidBrush(RGB(0, 0, 0));
+	hpb = SelectObject(hMdc, wheel1B);
+	Rectangle(hMdc, tp.x - 2, tp.y - 8, tp.x + 6, tp.y);
+	SelectObject(hMdc, hpb);
+    DeleteObject(wheel1B);
+
+	wheel2B = CreateSolidBrush(RGB(0, 0, 0));
+	hpb = SelectObject(hMdc, wheel1B);
+	Rectangle(hMdc, tp.x + 34, tp.y - 8, tp.x + 42, tp.y);
+	SelectObject(hMdc, wheel1B);
+    DeleteObject(wheel2B);
+	
+	
+
+	
+
+	return 1;
+}
+
+
 

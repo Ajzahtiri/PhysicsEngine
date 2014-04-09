@@ -14,7 +14,7 @@ class boundingBox
 
 	public:
 		boundingBox();
-		~boundingBox(void);
+		~boundingBox(){};
 		void	initBox(float x, float y, float w, float h);
 		bool	checkCollision(boundingBox b);
 

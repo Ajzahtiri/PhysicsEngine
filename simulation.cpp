@@ -30,16 +30,10 @@
 		 *----------------------------------------------------------------------------*/
 
 Simulation::Simulation()
-	{
-		timeSpeed = 5;		//affects speed! lower = faster
-	}
+{
+	timeSpeed = 5;		//affects speed! lower = faster
+}
 
-Simulation::~Simulation()
-	{
-	simCleanUp();
-
-	return;			
-	}
 
 int Simulation::simMain(HWND hWnd, MSG * msg)
 {

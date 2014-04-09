@@ -13,10 +13,11 @@ WorldData::WorldData()
 	emptyAcc.x = 0;
 	emptyAcc.y = 0;
 
+	//setup snowfall
 	for (int i = 0; i < 1000; i++)
 	{
 		Point2D sp;
-		int x = rand() % (VIEWPORT_RIGHT + (VIEWPORT_RIGHT / 2)) + (0 - (VIEWPORT_RIGHT / 2));
+		int x = rand() % (VIEWPORT_RIGHT * 2) + (0 - (VIEWPORT_RIGHT / 2));
 		int y = rand() % VIEWPORT_DOWN + 1;
 		sp.x = x;
 		sp.y = y - VIEWPORT_DOWN - 10;
@@ -30,6 +31,13 @@ WorldData::WorldData()
 		s = new snowball(sp, vel, emptyAcc, true, mass, gravity); 
 		snowfall.push_back(*s);
 	}
+
+	//setup buggy
+	Point2D tp;
+	tp.x = 500;
+	tp.y = 450;
+	t = new buggy(tp);
+
 }
 
 int WorldData::worldDataModuleInit()
@@ -37,13 +45,6 @@ int WorldData::worldDataModuleInit()
 	tickBefore = GetTickCount();
 
 	return 1;
-}
-
-WorldData::~WorldData()
-{
-	worldCleanUp();
-
-	return;			
 }
 
 void WorldData::worldCleanUp()
@@ -141,6 +142,18 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 	case V:
 		windRight();
 		break;
+	case A:
+		if (t->getBuggyX() > VIEWPORT_LEFT)
+		{
+			t->moveLeft();
+		}
+		break;
+	case D:
+		if (t->getBuggyX() < VIEWPORT_RIGHT)
+		{
+			t->moveRight();
+		}
+		break;
 	default:
 		break;
 	}
@@ -156,6 +169,7 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 		s++;
 	}
 
+	t->initBuggy(pGraphicsModule);
 	pGraphicsModule->drawText();
 
 	return 1;

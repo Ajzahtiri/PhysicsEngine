@@ -13,11 +13,6 @@ particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, fl
 	startPos = pos;
 }
 
-particleModel::~particleModel()
-{
-
-}
-
 int particleModel::worldDataModuleInit()
 {
 	return 1;

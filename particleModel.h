@@ -23,7 +23,7 @@ class particleModel
 
 	public:		
 		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
-		~particleModel();
+		~particleModel(){};
 
 		boundingBox b;
 

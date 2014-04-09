@@ -6,11 +6,6 @@ snowball::snowball(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, P
 	setShape2Square(mas);
 }
 
-snowball::~snowball()
-{
-
-}
-
 void snowball::setShape2Square(float m)
 {
     shape[0].x = 0.0F;	shape[0].y = 0.0F;
