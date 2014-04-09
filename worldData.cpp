@@ -35,7 +35,7 @@ WorldData::WorldData()
 		int x = rand() % ((VIEWPORT_RIGHT * 2) + 1);
 		int y = rand() % (VIEWPORT_DOWN + 1);
 		sp.x = x - VIEWPORT_RIGHT / 2;
-		sp.y = y - VIEWPORT_DOWN;
+		sp.y = y - VIEWPORT_DOWN - 10;
 
 		float mass = rand() % 4 + 1;
 		mass /= 2;
@@ -107,6 +107,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 	difference /= 1000;
 	tickBefore = tickNow;
 
+	//update snowballs
 	if (isSnowing == true)
 	{
 		std::list<snowball>::iterator s = snowfall.begin();
@@ -121,6 +122,19 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			s++;
 		}
 	}	
+
+	//check keyboard for user input
+	switch(kEvent)
+	{
+	case Z:
+		startSnow();
+		break;
+	case X:
+		stopSnow();
+		break;
+	default:
+		break;
+	}
 	return 1;
 }
 

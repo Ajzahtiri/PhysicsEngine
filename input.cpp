@@ -45,6 +45,11 @@ keyEvent Input::checkUserInput(HWND hWnd)
 		event = Z;
 	}
 
+	else if (IS_KEY_DOWN(0x58))
+	{
+		event = X;
+	}
+
 	else 
 	{
 		event = QUIET;

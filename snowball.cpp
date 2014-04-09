@@ -25,8 +25,7 @@ void snowball::checkSnow()
 
 	if(p.y + 5 >= VIEWPORT_DOWN - 40)
 	{		
-		setPosX(startPos.x);
-		setPosY(startPos.y);
+		resetParticle();
 		setAccX(0);
 		setAccY(0);
 		setVel(0, 1);

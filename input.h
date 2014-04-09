@@ -7,7 +7,7 @@
 #define IS_KEY_UP(virt_key_code)  ( (GetAsyncKeyState(virt_key_code) & 0x8000) ? 0 : 1 )
 
 /* possible key events */
-typedef enum EVENT {QUIT, UP, DOWN, LEFT, RIGHT, QUIET, Z}	keyEvent;
+typedef enum EVENT {QUIT, UP, DOWN, LEFT, RIGHT, QUIET, Z, X}	keyEvent;
 
 class Input
 	{
