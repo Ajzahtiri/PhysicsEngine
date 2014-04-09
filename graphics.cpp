@@ -21,7 +21,7 @@ int GraphicsM::graphicsModuleInit(HWND hWnd)
 
 int GraphicsM::setViewport()
 {	
-	viewport.left = 0; viewport.top = 0; viewport.right = VIEWPORT_RIGHT; viewport.bottom = VIEWPORT_DOWN;	
+	viewport.left = VIEWPORT_LEFT; viewport.top = VIEWPORT_UP; viewport.right = VIEWPORT_RIGHT; viewport.bottom = VIEWPORT_DOWN;	
 	return 1;
 }
 
@@ -131,7 +131,7 @@ int GraphicsM::drawText()
 	SetTextColor(hMdc, 0x0000000);
 	SetBkMode(hMdc, TRANSPARENT);
 
-	DrawText(hMdc, "Z - Reset Snow | X - Start Snow", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
+	DrawText(hMdc, "Z - Start Snow | X - Stop Snow | C - Left Wind | V - Right Wind", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
 
 	return 1;
 }
