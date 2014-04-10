@@ -42,6 +42,12 @@
     <ClCompile Include="buggy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mote.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="missile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataTypes.h">
@@ -81,6 +87,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="buggy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mote.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="missile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,7 +2,7 @@
 #include "definitions.h"
 #include "appearance.h"
 
-particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f)
+particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp)
 {
 	position = pos;
 	velocity = vel;
@@ -10,7 +10,7 @@ particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, fl
 	isMoving = mov;
 	mass = mas;
 	totalForce = f;
-	startPos = pos;
+	startPos = sp;
 }
 
 int particleModel::worldDataModuleInit()

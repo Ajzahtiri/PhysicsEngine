@@ -130,6 +130,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="boundingBox.cpp" />
+    <ClCompile Include="missile.cpp" />
+    <ClCompile Include="mote.cpp" />
     <ClCompile Include="snowball.cpp" />
     <ClCompile Include="graphics.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
@@ -158,6 +160,8 @@
     <ClInclude Include="boundingBox.h" />
     <ClInclude Include="dataTypes.h" />
     <ClInclude Include="definitions.h" />
+    <ClInclude Include="missile.h" />
+    <ClInclude Include="mote.h" />
     <ClInclude Include="snowball.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />

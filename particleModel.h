@@ -24,7 +24,7 @@ class particleModel
 		boundingBox b;
 
 	public:		
-		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
+		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp);
 		~particleModel(){};
 
 		void	setPos(float x, float y);		

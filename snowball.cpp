@@ -1,7 +1,7 @@
 #include "snowball.h"
 
 snowball::snowball(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f)
-	: particleModel(pos, vel, acc, mov, mas, f)
+	: particleModel(pos, vel, acc, mov, mas, f, pos)
 {
 	setShape2Square(mas);
 }
