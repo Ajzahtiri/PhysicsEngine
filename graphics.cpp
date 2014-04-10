@@ -68,7 +68,9 @@ int GraphicsM::drawHUD()
 	HGDIOBJ		hpb;				// handle for previous brush
 	HBRUSH		hBlueBrush;			// handle for blue custom brush
 	HBRUSH		hWhiteBrush;		// handle for white custom brush
+	HBRUSH		hBunkerBrush;
 	POINT		groundShape[10];	
+	POINT		bunkerShape[4];
 
 	// sky (blue colour)
 	hBlueBrush = CreateSolidBrush(RGB(0,192,255));	// blue brush
@@ -80,9 +82,6 @@ int GraphicsM::drawHUD()
 	// ground (white colour)
 	hWhiteBrush = CreateSolidBrush(RGB(255, 255, 255));
 	hpb = SelectObject(hMdc, hWhiteBrush);
-	Rectangle(hMdc, viewport.left, viewport.bottom - 10, viewport.right, viewport.bottom);
-	SelectObject(hMdc, hpb);	
-
 	groundShape[0].x = 0;
 	groundShape[0].y = VIEWPORT_DOWN - 20;
 	groundShape[1].x = 100;
@@ -103,10 +102,20 @@ int GraphicsM::drawHUD()
 	groundShape[8].y = VIEWPORT_DOWN;
 	groundShape[9].x = VIEWPORT_LEFT;
 	groundShape[9].y = VIEWPORT_DOWN;
-
-	Polygon(hMdc, groundShape, 10);
-
+	Polygon(hMdc, groundShape, 10);	
     DeleteObject(hWhiteBrush);
+
+	hpb = SelectObject(hMdc, hWhiteBrush);
+	bunkerShape[0].x = 0;
+	bunkerShape[0].y = VIEWPORT_DOWN - 350;
+	bunkerShape[1].x = 150;
+	bunkerShape[1].y = VIEWPORT_DOWN - 350;
+	bunkerShape[2].x = 150;
+	bunkerShape[2].y = VIEWPORT_DOWN - 345;
+	bunkerShape[3].x = 0;
+	bunkerShape[3].y = VIEWPORT_DOWN - 345;
+	Polygon(hMdc, bunkerShape, 4);
+	DeleteObject(hWhiteBrush);
 
 	return 1;
 }
