@@ -60,6 +60,11 @@ keyEvent Input::checkUserInput(HWND hWnd)
 		event = A;
 	}
 
+	else if (IS_KEY_DOWN(0x53))
+	{
+		event = S;
+	}
+
 	else if (IS_KEY_DOWN(0x44))
 	{
 		event = D;

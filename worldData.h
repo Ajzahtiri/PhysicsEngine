@@ -6,6 +6,7 @@
 #include	"graphics.h"		/* include file for graphics module */
 #include	"snowball.h"
 #include	"buggy.h"
+#include	"missile.h"
 #include	<list>
 #include	"input.h"			/* include file for user input module */
 
@@ -31,6 +32,10 @@ private:
 	Point2D leftSlopeOneLeft, leftSlopeOneTop, leftSlopeOneRight;
 	Point2D rightSlopeTwoLeft, rightSlopeTwoTop, rightSlopeTwoRight;
 
+	//missile/motes
+	missile* mi;
+	bool fired, isFiring, set;
+	boundingBox mB;
 	
 	// Dynamics parameters (for physics simulation) 
 	Point2D		shape[4];			// array to store a polygonal shape consisting of four vertices (e.g. a square) 

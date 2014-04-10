@@ -2,9 +2,13 @@
 #include "particleModel.h"
 #include "snowball.h"
 #include "definitions.h"
+#include <time.h>
 
 WorldData::WorldData()
 {
+	//do some things
+	srand(time(NULL));
+
 	//setup some forces
 	gravity.x = 0;
 	gravity.y = 5;
@@ -55,11 +59,28 @@ WorldData::WorldData()
 	leftSlopeOneTop.x = 180;
 	leftSlopeOneTop.y = VIEWPORT_DOWN - 120;
 
+	//setup missile/motes
+	fired = false;
+
+	Point2D mP;
+	mP.x = tp.x + 10;
+	mP.y = tp.y - 15;
+
+	Point2D mV;
+	mV.x = -100;
+	mV.y = -200;
+
+	mB.initBox(mP.x, mP.y, 30, 24);
+	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
+	mi->initMissile();
 }
 
 int WorldData::worldDataModuleInit()
 {	
 	tickBefore = GetTickCount();
+
+	mi->squareTheMotes();
+	set = false;
 
 	return 1;
 }
@@ -146,6 +167,13 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 
 	//update buggy
 
+	
+	//update missile
+	if (mi->getFired() == true)
+	{
+		mi->updateMissile(difference);
+		mi->checkCollision();
+	}
 
 	//check keyboard for user input
 	switch(kEvent)
@@ -168,6 +196,21 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			veh->moveLeft();
 		}
 		break;
+	case S:
+		if (isFiring == false)
+		{
+			isFiring = true;
+			
+			if (mi->getFired() == true && mi->getBoomed() == true)
+			{
+				mi->setMissileShape(veh->getBuggyX(), veh->getBuggyY());
+			}
+			else
+			{
+				mi->setFired(true);
+			}
+		}
+		break;
 	case D:
 		if (veh->getBuggyY() < VIEWPORT_RIGHT)
 		{
@@ -188,6 +231,9 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 		s->draw(pGraphicsModule);
 		s++;
 	}
+
+	mi->drawMissile(pGraphicsModule);
+	mi->drawMissileMotes(pGraphicsModule);
 
 	veh->initBuggy(pGraphicsModule);
 	pGraphicsModule->drawText();
