@@ -15,7 +15,7 @@ void missile::initMissile()
 	x = mP.x;
 	y = mP.y;
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 24; i++)
 	{
 		Point2D pos, vel, acc, dis, fo;
 
@@ -25,13 +25,36 @@ void missile::initMissile()
 			pos.y = y - 13 - i * 3;
 		}
 
-		if (i > 9)
+		if (i < 20 && i > 9)
 		{
 			pos.x = x + 3;
 			pos.y = y + 17 - i * 3;
 		}
 
-	
+		if (i == 20)
+		{
+			pos.x = x + 6;
+			pos.y = y + 20 - i * 3;
+		}
+		
+		if (i == 21)
+		{
+			pos.x = x - 3;
+			pos.y = y + 23 - i * 3;
+		}
+
+		if (i == 22)
+		{
+			pos.x = x;
+			pos.y = y + 23 - i * 3;
+		}
+
+		if (i == 23)
+		{
+			pos.x = x + 3;
+			pos.y = y + 26 - i * 3;
+		}
+
 
 		dis.x = 0;
 		dis.y = 0;
@@ -59,12 +82,12 @@ void missile::squareTheMotes()
 	}
 }
 
-void missile::drawMissile(GraphicsM * pGraphicsModule)
+void missile::drawMissileSpecial(GraphicsM * pGraphicsModule)
 {
 	mB.initBox(mP.x - 5, mP.y, 20, 8);
 }
 
-void missile::drawMissileMotes(GraphicsM * pGraphicsModule)
+void missile::drawMissile(GraphicsM * pGraphicsModule)
 {
 	mB.initBox(mP.x - 5, mP.y, 20, 8);
 
@@ -217,80 +240,71 @@ void missile::reMissile(int x, int y)
 	int t = 0;
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
-	{
-		if (t <= 10)
+	{ 
+		Point2D pos, vel, acc, dis, fo;
+
+		x = mP.x;
+		y = mP.y;
+
+		if (t < 10)
 		{
-			moi->setStartPosX(x + 1 + t * 2);
-			moi->setStartPosY(y);
+			pos.x = x;
+			pos.y = y - 13 - t * 3;
 		}
-		else if (t < 20)
+
+		if (t < 20 && t > 9)
 		{
-			moi->setStartPosX(x + 3 + t * 2);
-			moi->setStartPosY(y + 2);
+			pos.x = x + 3;
+			pos.y = y + 17 - t * 3;
 		}
-		else if (t < 30)
+
+		if (t == 20)
 		{
-			moi->setStartPosX(x + 6 + t * 2);
-			moi->setStartPosY(y + 4);
+			pos.x = x + 6;
+			pos.y = y + 20 - t * 3;
 		}
-		else if (t < 40)
+		
+		if (t == 21)
 		{
-			moi->setStartPosX(x + 10 + t * 2);
-			moi->setStartPosY(y + 6);
+			pos.x = x - 3;
+			pos.y = y + 23 - t * 3;
 		}
-		else if (t < 50)
+
+		if (t == 22)
 		{
-			moi->setStartPosX(x + 15 + t * 2);
-			moi->setStartPosY(y + 8);
+			pos.x = x;
+			pos.y = y + 23 - t * 3;
 		}
-		else if (t < 60)
+
+		if (t == 23)
 		{
-			moi->setStartPosX(x + 20 + t * 2);
-			moi->setStartPosY(y + 10);
+			pos.x = x + 3;
+			pos.y = y + 26 - t * 3;
 		}
-		else if (t < 70)
-		{
-			moi->setStartPosX(x + 25 + t * 2);
-			moi->setStartPosY(y + 12);
-		}
-		else if (t < 80)
-		{
-			moi->setStartPosX(x + 35 + t * 2);
-			moi->setStartPosY(y + 14);
-		}
-		else if (t < 90)
-		{
-			moi->setStartPosX(x + 50 + t * 2);
-			moi->setStartPosY(y + 16);
-		}
-		else if (t < 100)
-		{
-			moi->setStartPosX(x + 75 + t * 2);
-			moi->setStartPosY(y + 20);
-		}
+		
 		t++;
-		moi++;
+		moi++;		
 	}
 }
 
 void missile::moveMissileLeft()
 {
-	mP.x -= 3;
+	mP.x -= 1;
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
 	{
-		moi->setPosX(moi->getPosX() - 3);
+		moi->setPosX(moi->getPosX() - 1);
 		moi++;
 	}
 }
 
 void missile::moveMissileRight()
 {
-	mP.x += 3;
+	mP.x += 1;
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
 	{
-		moi->setPosX(moi->getPosX() + 3);
+		moi->setPosX(moi->getPosX() + 1);
 		moi++;
 	}
 }

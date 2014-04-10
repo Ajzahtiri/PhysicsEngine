@@ -62,7 +62,12 @@ keyEvent Input::checkUserInput(HWND hWnd)
 
 	else if (IS_KEY_DOWN(0x53))
 	{
-		event = S;
+		event = S_DOWN;
+	}
+
+	else if (IS_KEY_UP(0x53))
+	{
+		event = S_UP;
 	}
 
 	else if (IS_KEY_DOWN(0x44))

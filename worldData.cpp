@@ -194,9 +194,14 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		if (veh->getBuggyX() > VIEWPORT_LEFT)
 		{
 			veh->moveLeft();
+
+			if (mi->getFired() == false)
+			{
+				mi->moveMissileLeft();
+			}
 		}
 		break;
-	case S:
+	case S_DOWN:
 		if (isFiring == false)
 		{
 			isFiring = true;
@@ -211,10 +216,18 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			}
 		}
 		break;
+	case S_UP:
+		isFiring = false;
+		break;
 	case D:
 		if (veh->getBuggyY() < VIEWPORT_RIGHT)
 		{
 			veh->moveRight();
+
+			if (mi->getFired() == false)
+			{
+				mi->moveMissileRight();
+			}
 		}
 		break;
 	default:
@@ -233,7 +246,6 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 	}
 
 	mi->drawMissile(pGraphicsModule);
-	mi->drawMissileMotes(pGraphicsModule);
 
 	veh->initBuggy(pGraphicsModule);
 	pGraphicsModule->drawText();
