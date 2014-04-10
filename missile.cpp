@@ -15,47 +15,34 @@ void missile::initMissile()
 	x = mP.x;
 	y = mP.y;
 
-	for (int i = 0; i < 24; i++)
+	for (int i = 1; i < 25; i++)
 	{
 		Point2D pos, vel, acc, dis, fo;
 
-		if (i < 10)
-		{
-			pos.x = x;
-			pos.y = y - 13 - i * 3;
-		}
-
-		if (i < 20 && i > 9)
-		{
-			pos.x = x + 3;
-			pos.y = y + 17 - i * 3;
-		}
-
-		if (i == 20)
-		{
-			pos.x = x + 6;
-			pos.y = y + 20 - i * 3;
-		}
-		
-		if (i == 21)
-		{
-			pos.x = x - 3;
-			pos.y = y + 23 - i * 3;
-		}
-
-		if (i == 22)
-		{
-			pos.x = x;
-			pos.y = y + 23 - i * 3;
-		}
-
 		if (i == 23)
 		{
-			pos.x = x + 3;
-			pos.y = y + 26 - i * 3;
+			pos.x = x;
+			pos.y = y - 6;
 		}
 
+		if (i < 12)
+		{
+			pos.x = x + 3;
+			pos.y = y - (3 * i);
+		}
 
+		if (i < 23 && i > 11)
+		{
+			pos.x = x + 6;
+			pos.y = y - (3 * (i - 11));
+		}				
+
+		if (i == 24)
+		{
+			pos.x = x + 9;
+			pos.y = y - 6;
+		}
+		
 		dis.x = 0;
 		dis.y = 0;
 		vel.x = 0;
@@ -82,14 +69,9 @@ void missile::squareTheMotes()
 	}
 }
 
-void missile::drawMissileSpecial(GraphicsM * pGraphicsModule)
-{
-	mB.initBox(mP.x - 5, mP.y, 20, 8);
-}
-
 void missile::drawMissile(GraphicsM * pGraphicsModule)
 {
-	mB.initBox(mP.x - 5, mP.y, 20, 8);
+	mB.initBox(mP.x, mP.y, 12, -33);
 
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
@@ -126,12 +108,12 @@ void missile::moveConstAcc(double t)
 
 void missile::updateMissile(double t)
 {
-	mB.initBox(mP.x - 5, mP.y, 20, 8);
+	mB.initBox(mP.x, mP.y, 12, -33);
 
 	if (isFired == true)
 	{
 		moveConstAcc(t);
-		mB.initBox(mP.x, mP.y, 30, 20);
+		mB.initBox(mP.x, mP.y, 12, -33);
 		std::vector<mote>::iterator moi = moteSplosion.begin();
 		while (moi != moteSplosion.end())
 		{
@@ -150,31 +132,27 @@ void missile::updateMissile(double t)
 		}
 	}
 
-	mB.initBox(mP.x - 5, mP.y, 20, 8);
+	mB.initBox(mP.x, mP.y, 12, -33);
 }
 
 void missile::checkCollision()
 {
-	if (isBoomed == false)
+	std::vector<mote>::iterator moi = moteSplosion.begin();
+	while (moi != moteSplosion.end())
 	{
-		std::vector<mote>::iterator moi = moteSplosion.begin();
-		while (moi != moteSplosion.end())
+		if (isBoomed == false)
 		{
-			if (mP.y >= VIEWPORT_DOWN - 20 && (mP.x >= VIEWPORT_LEFT && mP.x <= 100) 
-			|| (mP.y >= VIEWPORT_DOWN - 80 && (mP.x >= 290 && mP.x <= 460))
-			|| (mP.y  >= VIEWPORT_DOWN - 120 && (mP.x  >= 180 && mP.x <= 260))
-			|| (mP.y >= VIEWPORT_DOWN - 180 && (mP.x  >= 530 && mP.x <= VIEWPORT_RIGHT))
-			|| ((mP.y >= VIEWPORT_DOWN - 350 && mP.y <= VIEWPORT_DOWN - 345) && (mP.x  >= 0 && mP.x <= 150)))
+			mB.initBox(mP.x, mP.y, 12, -33);
+			if (mB.checkFlatsCollision())
 			{
 				explodeMissile();
 			}
-
-			else
-			{
-
-			}
-			moi++;
 		}
+		else 
+		{
+
+		}
+		moi++;
 	}
 }
 
@@ -208,8 +186,8 @@ void missile::setMissileShape(int x, int y)
 	isBoomed = true;
 	isFired = false;
 
-	x += 3;
-	y -= 25;
+	x += 12;
+	y -= 20;
 
 	reMissile(x, y);
 
@@ -219,7 +197,7 @@ void missile::setMissileShape(int x, int y)
 		moi->resetParticle();
 		moi->setMoving(false);
 
-		moi->setVelX(-100);
+		moi->setVelX(-50);
 		moi->setVelY(-200);
 
 		moi++;

@@ -1,6 +1,7 @@
 #pragma once
 #include	"dataTypes.h"		/* include file for custom data types */
 #include	"graphics.h"		/* include file for graphics module */
+#include	"definitions.h"
 
 class boundingBox
 {
@@ -17,6 +18,7 @@ class boundingBox
 		~boundingBox(){};
 		void	initBox(float x, float y, float w, float h);
 		bool	checkCollision(boundingBox b);
+		bool	checkFlatsCollision();
 		bool	checkSlopeCollision(Point2D sl, Point2D sr, Point2D st);
 
 		void	setX(float xx)

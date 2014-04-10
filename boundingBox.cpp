@@ -53,6 +53,13 @@ bool boundingBox::checkCollision(boundingBox b)
 	}
 }
 
+bool boundingBox::checkFlatsCollision()
+{	
+	if(y >= VIEWPORT_DOWN - 20)
+	{		
+		return true;
+	}
+}
 
 bool boundingBox::checkSlopeCollision(Point2D sl, Point2D sr, Point2D st)
 {

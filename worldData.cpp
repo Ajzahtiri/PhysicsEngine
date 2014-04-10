@@ -46,10 +46,10 @@ WorldData::WorldData()
 	}
 
 	//setup buggy
-	Point2D tp;
-	tp.x = 400;
-	tp.y = VIEWPORT_DOWN - 80;
-	veh = new buggy(tp);
+	Point2D bp;
+	bp.x = 400;
+	bp.y = VIEWPORT_DOWN - 80;
+	veh = new buggy(bp);
 
 	//setup slopes
 	leftSlopeOneLeft.x = 100;
@@ -63,14 +63,14 @@ WorldData::WorldData()
 	fired = false;
 
 	Point2D mP;
-	mP.x = tp.x + 10;
-	mP.y = tp.y - 15;
+	mP.x = bp.x + 14;
+	mP.y = bp.y - 20;
 
 	Point2D mV;
-	mV.x = -100;
-	mV.y = -200;
+	mV.x = -50;
+	mV.y = -150;
 
-	mB.initBox(mP.x, mP.y, 30, 24);
+	mB.initBox(mP.x, mP.y, 12, -33);
 	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
 	mi->initMissile();
 }
