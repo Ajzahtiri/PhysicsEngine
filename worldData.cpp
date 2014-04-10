@@ -5,15 +5,16 @@
 
 WorldData::WorldData()
 {
+	//setup some forces
 	gravity.x = 0;
-	gravity.y = 9;
-	isSnowing = true;
+	gravity.y = 5;
 
 	Point2D emptyAcc;
 	emptyAcc.x = 0;
 	emptyAcc.y = 0;
 
-	//setup snowfall
+	//setup snowfall	
+	isSnowing = true;
 	for (int i = 0; i < 1000; i++)
 	{
 		Point2D sp;
@@ -37,6 +38,14 @@ WorldData::WorldData()
 	tp.x = 400;
 	tp.y = VIEWPORT_DOWN - 80;
 	t = new buggy(tp);
+
+	//setup slopes
+	leftSlopeOneLeft.x = 100;
+	leftSlopeOneLeft.y = VIEWPORT_DOWN - 20;
+	leftSlopeOneRight.x = 180;
+	leftSlopeOneRight.y = VIEWPORT_DOWN - 20;
+	leftSlopeOneTop.x = 180;
+	leftSlopeOneTop.y = VIEWPORT_DOWN - 120;
 
 }
 

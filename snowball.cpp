@@ -18,7 +18,10 @@ void snowball::checkSnow()
 {
 	Point2D p = getPos();
 
-	if(p.y + 5 >= VIEWPORT_DOWN - 40)
+	if((p.y + mass >= VIEWPORT_DOWN - 20 && (p.x >= VIEWPORT_LEFT && p.x + mass <= 100)) 
+		|| (p.y + mass >= VIEWPORT_DOWN - 80 && (p.x >= 290 && p.x + mass <= 460))
+		|| (p.y + mass >= VIEWPORT_DOWN - 120 && (p.x >= 180 && p.x + mass <= 260))
+		|| (p.y + mass >= VIEWPORT_DOWN - 180 && (p.x >= 530 && p.x + mass <= VIEWPORT_RIGHT)))
 	{		
 		resetParticle();
 		setAccX(0);
