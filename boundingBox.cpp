@@ -5,7 +5,6 @@ boundingBox::boundingBox()
 
 }
 
-
 void boundingBox::initBox(float xx, float yy, float w, float h)
 {
 	x = xx;
@@ -53,3 +52,166 @@ bool boundingBox::checkCollision(boundingBox b)
 		return false;
 	}
 }
+
+bool boundingBox::checkSlopeCollision(Point2D triangleTop, Point2D triangleLeft,Point2D triangleRight)
+{
+	bool test1,test2;
+	test1 = false;
+	test2 = false;
+	float a,b,c,d,e,f,g,h,k,l,m,n,o,p;
+	a = triangleTop.x;
+	b = triangleTop.y;
+	c = triangleLeft.x;
+	d = triangleLeft.y;
+	e = triangleRight.x;
+	f = triangleRight.y;
+
+	if(getBlcY() < b && getBrcY() < b)
+	{
+		return false;
+	}
+	else
+	{
+		g = getBlcX();
+		h = getBlcY();
+
+		 k = e*(b-d) + f*(c-a) + a*d - b*c; 
+		 l = g*(b-d) + h*(c-a) + a*d - b*c;
+
+		 m = a*(f-d) + b*(c-e) + e*d - f*c;
+		 n = g*(f-d) + h*(c-e) + e*d - f*c;
+
+		 o = c*(b-f) + d*(e-a) + a*f - b*e;
+		 p = g*(b-f) + h*(e-a) + a*f - b*e;
+
+		 if(l==0 || n==0 || p==0)
+		 {
+			 //return true;
+			 test1 = true;
+		 }
+		 else if((k/l>=0) && (m/n>=0) && (o/p>=0))
+		 {
+			 test1 = true;
+			 //return true;
+		 }
+		 else
+		 {
+			 test1 = false;
+			 //return false;
+		 }
+
+		g = getBrcX();
+		h = getBrcY();
+
+		 k = e*(b-d) + f*(c-a) + a*d - b*c; 
+		 l = g*(b-d) + h*(c-a) + a*d - b*c;
+
+		 m = a*(f-d) + b*(c-e) + e*d - f*c;
+		 n = g*(f-d) + h*(c-e) + e*d - f*c;
+
+		 o = c*(b-f) + d*(e-a) + a*f - b*e;
+		 p = g*(b-f) + h*(e-a) + a*f - b*e;
+
+		 if(l==0 || n==0 || p==0)
+		 {
+			 //return true;
+			 test2 = true;
+		 }
+		 else if((k/l>=0) && (m/n>=0) && (o/p>=0))
+		 {
+			 test2 = true;
+			 //return true;
+		 }
+		 else
+		 {
+			 test2 = false;
+			 //return false;
+		 }
+
+		 if(test1 == true || test2 == true)
+		 {
+			 return true;
+		 }
+		 else
+		 {
+			 return false;
+		 }
+	}
+}
+/*
+bool boundingBox::checkSlopeCollision(Point2D sl, Point2D sr, Point2D st)
+{
+	bool b1 = false, b2 = false;
+	float a, b, c, d, e, f, g, h, i, j, k, l, m, n;
+	a = st.x;
+	b = st.y;
+	c = sl.x;
+	d = sl.y;
+	e = sr.x;
+	f = sr.y;
+
+	if (getBlcY() < b && getBrcY() < b)
+	{
+		return false;
+	}
+	else 
+	{
+		g = getBlcX();
+		h = getBlcY();
+		
+		i = e * (b - d) + f * (c - a) + a * d - b * c;
+		j = g * (b - d) + h * (c - a) + a * d - b * c;
+		k = a * (f - d) + b * (c - e) + e * d - f * c;
+		l = g * (f - d) + h * (c - e) + e * d - f * c;
+		m = c * (b - f) + d * (e - a) + a * f - b * e;
+		n = g * (b - f) + h * (e - a) + a * f - b * e;
+
+		if (j == 0 || l == 0 || n == 0)
+		{
+			b1 = true;
+		}
+		else if((i / j >= 0) && (k / l >= 0) && (m / n >= 0))
+		{
+			b1 = true;
+		}
+		else 
+		{
+			b1 = false;
+		}
+
+		g = getBrcX();
+		h = getBrcY();
+
+		i = e * (b - d) + f * (c - a) + a * d - b * c;
+		j = g * (b - d) + h * (c - a) + a * d - b * c;
+		k = a * (f - d) + b * (c - e) + e * d - f * c;
+		l = g * (f - d) + h * (c - e) + e * d - f * c;
+		m = c * (b - f) + d * (e - a) + a * f - b * e;
+		n = g * (b - f) + h * (e - a) + a * f - b * e;
+
+		if (j == 0 || l == 0 || n == 0)
+		{
+			b2 = true;
+		}
+		else if ((i / j >= 0) && (k / l >= 0) && (m / n >= 0))
+		{
+			b2 = true;
+		}
+		else
+		{
+			b2 = false;
+		}
+
+		//overall test
+		if (b1 == true || b2 == true)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+}
+
+*/

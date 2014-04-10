@@ -14,14 +14,15 @@ void snowball::setShape2Square(float m)
     shape[3].x = 0.0F;	shape[3].y = m + 1;
 }
 
-void snowball::checkSnow()
+void snowball::checkSnow(Point2D sl, Point2D sr, Point2D st)
 {
 	Point2D p = getPos();
 
 	if((p.y + mass >= VIEWPORT_DOWN - 20 && (p.x >= VIEWPORT_LEFT && p.x + mass <= 100)) 
 		|| (p.y + mass >= VIEWPORT_DOWN - 80 && (p.x >= 290 && p.x + mass <= 460))
 		|| (p.y + mass >= VIEWPORT_DOWN - 120 && (p.x >= 180 && p.x + mass <= 260))
-		|| (p.y + mass >= VIEWPORT_DOWN - 180 && (p.x >= 530 && p.x + mass <= VIEWPORT_RIGHT)))
+		|| (p.y + mass >= VIEWPORT_DOWN - 180 && (p.x >= 530 && p.x + mass <= VIEWPORT_RIGHT))
+		|| b.checkSlopeCollision(sl, sr, st))
 	{		
 		resetParticle();
 		setAccX(0);

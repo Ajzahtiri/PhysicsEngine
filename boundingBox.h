@@ -17,6 +17,7 @@ class boundingBox
 		~boundingBox(){};
 		void	initBox(float x, float y, float w, float h);
 		bool	checkCollision(boundingBox b);
+		bool	checkSlopeCollision(Point2D sl, Point2D sr, Point2D st);
 
 		void	setX(float xx)
 		{

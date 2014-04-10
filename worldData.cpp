@@ -37,7 +37,7 @@ WorldData::WorldData()
 	Point2D tp;
 	tp.x = 400;
 	tp.y = VIEWPORT_DOWN - 80;
-	t = new buggy(tp);
+	veh = new buggy(tp);
 
 	//setup slopes
 	leftSlopeOneLeft.x = 100;
@@ -130,11 +130,14 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			{
 				s->updateAcc();
 				s->moveConstAcc(difference);
-				s->checkSnow();
+				s->checkSnow(leftSlopeOneLeft, leftSlopeOneRight, leftSlopeOneTop);
 			}
 			s++;
 		}
 	}	
+
+	//update buggy
+
 
 	//check keyboard for user input
 	switch(kEvent)
@@ -152,15 +155,15 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		windRight();
 		break;
 	case A:
-		if (t->getBuggyX() > VIEWPORT_LEFT)
+		if (veh->getBuggyX() > VIEWPORT_LEFT)
 		{
-			t->moveLeft();
+			veh->moveLeft();
 		}
 		break;
 	case D:
-		if (t->getBuggyX() < VIEWPORT_RIGHT)
+		if (veh->getBuggyX() < VIEWPORT_RIGHT)
 		{
-			t->moveRight();
+			veh->moveRight();
 		}
 		break;
 	default:
@@ -178,7 +181,7 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 		s++;
 	}
 
-	t->initBuggy(pGraphicsModule);
+	veh->initBuggy(pGraphicsModule);
 	pGraphicsModule->drawText();
 
 	return 1;

@@ -20,12 +20,13 @@ class particleModel
 		Point2D	startPos;		
 		bool	isMoving;
 		float	mass;
+		
+		boundingBox b;
 
 	public:		
 		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
 		~particleModel(){};
 
-		boundingBox b;
 
 		void	setPos(float x, float y);		
 		void	checkWallCollisions(boundingBox *b);
@@ -34,6 +35,10 @@ class particleModel
 		void	moveConstAcc(double t);
 		void	updateAcc();
 
+		boundingBox getBb()
+		{
+			return b;
+		}
 		void	setPosX(float x)
 		{
 			position.x = x;

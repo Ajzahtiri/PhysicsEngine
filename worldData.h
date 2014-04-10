@@ -25,7 +25,7 @@ private:
 	snowball * s;
 
 	//buggy
-	buggy * t;
+	buggy * veh;
 
 	//slopes
 	Point2D leftSlopeOneLeft, leftSlopeOneTop, leftSlopeOneRight;
