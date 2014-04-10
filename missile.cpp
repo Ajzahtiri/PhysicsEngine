@@ -15,60 +15,23 @@ void missile::initMissile()
 	x = mP.x;
 	y = mP.y;
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		Point2D pos, vel, acc, dis, fo;
 
 		if (i < 10)
 		{
-			pos.x = x + 2 + i * 2;
-			pos.y = y;
+			pos.x = x;
+			pos.y = y - 13 - i * 3;
 		}
-		else if (i < 20)
+
+		if (i > 9)
 		{
-			pos.x = x + 5 + 1 * 2;
-			pos.y = y + 3;
+			pos.x = x + 3;
+			pos.y = y + 17 - i * 3;
 		}
-		else if (i < 30)
-		{
-			pos.x = x + 4 + i * 2;
-			pos.y = y + 8;
-		}
-		else if (i < 40)
-		{
-			pos.x = x + 9 + i * 2;
-			pos.y = y + 2;
-		}
-		else if (i < 50)
-		{
-			pos.x = x + 3 + i * 2;
-			pos.y = y + 1;
-		}
-		else if (i < 60)
-		{
-			pos.x = x + 6 + i * 2;
-			pos.y = y + 4;
-		}
-		else if (i < 70)
-		{
-			pos.x = x + 7 + i * 2;
-			pos.y = y + 5;
-		}
-		else if (i < 80)
-		{
-			pos.x = x + 11 + i * 2;
-			pos.y = y + 11;
-		}
-		else if (i < 90)
-		{
-			pos.x = x - 4 + i * 2;
-			pos.y = y + 15;
-		}
-		else if (i < 100)
-		{
-			pos.x = x - 7 + i * 2;
-			pos.y = y + 20;
-		}
+
+	
 
 		dis.x = 0;
 		dis.y = 0;
