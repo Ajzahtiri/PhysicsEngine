@@ -9,16 +9,24 @@ WorldData::WorldData()
 	gravity.x = 0;
 	gravity.y = 5;
 
+	Point2D emptyForce;
+	emptyForce.x = 0;
+	emptyForce.y = 0;
+
 	Point2D emptyAcc;
 	emptyAcc.x = 0;
 	emptyAcc.y = 0;
+
+	Point2D emptyVel;
+	emptyVel.x = 0;
+	emptyVel.y = 0;
 
 	//setup snowfall	
 	isSnowing = true;
 	for (int i = 0; i < 1000; i++)
 	{
 		Point2D sp;
-		int x = rand() % (VIEWPORT_RIGHT * 2) + (0 - (VIEWPORT_RIGHT / 2));
+		int x = rand() % 2600 - 1300;
 		int y = rand() % VIEWPORT_DOWN + 1;
 		sp.x = x;
 		sp.y = y - VIEWPORT_DOWN - 10;
@@ -161,7 +169,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		}
 		break;
 	case D:
-		if (veh->getBuggyX() < VIEWPORT_RIGHT)
+		if (veh->getBuggyY() < VIEWPORT_RIGHT)
 		{
 			veh->moveRight();
 		}

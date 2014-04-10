@@ -27,7 +27,6 @@ class particleModel
 		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f);
 		~particleModel(){};
 
-
 		void	setPos(float x, float y);		
 		void	checkWallCollisions(boundingBox *b);
 		Point2D getPos();

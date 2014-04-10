@@ -33,6 +33,6 @@ public:
 		updateMe = b;
 	}
 	
-	//void	updateSwarmee
+	void	updateSwarmee
 
 };
