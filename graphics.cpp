@@ -191,13 +191,6 @@ int GraphicsM::drawBuggy(Point2D bp)
 	Rectangle(hMdc, bp.x + 32, bp.y, bp.x + 40, bp.y - 8);
 	SelectObject(hMdc, wheel1B);
     DeleteObject(wheel2B);
-	
-	
-
-	
 
 	return 1;
 }
-
-
-

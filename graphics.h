@@ -4,8 +4,11 @@
 #include	<windows.h>
 #include	"dataTypes.h"		/* include file for custom data types */
 #include	<gdiplus.h>
+
 using namespace Gdiplus;
 //#pragma comment(lib, "gdiplus.lib")
+
+
 
 
 class GraphicsM
@@ -34,7 +37,6 @@ class GraphicsM
 		
 		int		drawText();
 		int		drawBuggy(Point2D tp);
-
 	};
 
 

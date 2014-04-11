@@ -179,7 +179,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 	switch(kEvent)
 	{
 	case Z:
-		startSnow();
+		startSnow();		
 		break;
 	case X:
 		stopSnow();
@@ -200,6 +200,17 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 				mi->moveMissileLeft();
 			}
 		}
+		break;		
+	case D:
+		if (veh->getBuggyX() + veh->getBb().getWidth() < VIEWPORT_RIGHT)
+		{
+			veh->moveRight();
+
+			if (mi->getFired() == false)
+			{
+				mi->moveMissileRight();
+			}
+		}		
 		break;
 	case S_DOWN:
 		if (isFiring == false)
@@ -218,18 +229,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		break;
 	case S_UP:
 		isFiring = false;
-		break;
-	case D:
-		if (veh->getBuggyY() < VIEWPORT_RIGHT)
-		{
-			veh->moveRight();
-
-			if (mi->getFired() == false)
-			{
-				mi->moveMissileRight();
-			}
-		}
-		break;
+		break;		
 	default:
 		break;
 	}

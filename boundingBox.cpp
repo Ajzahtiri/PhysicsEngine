@@ -55,9 +55,13 @@ bool boundingBox::checkCollision(boundingBox b)
 
 bool boundingBox::checkFlatsCollision()
 {	
-	if(y >= VIEWPORT_DOWN - 20)
+	if(y >= VIEWPORT_DOWN)
 	{		
 		return true;
+	}
+	else 
+	{
+		return false;
 	}
 }
 
