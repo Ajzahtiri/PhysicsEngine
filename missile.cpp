@@ -177,12 +177,9 @@ void missile::setMissileShape(int x, int y)
 {
 	isBoomed = true;
 	isFired = false;
-
-	x += 12;
-	y -= 20;
-
+		
 	reMissile(x, y);
-
+	
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
 	{
@@ -200,59 +197,44 @@ void missile::setMissileShape(int x, int y)
 	mA.x = 0;
 	mA.y = 0;
 	mV.x = 0;
-	mV.y = 200;
+	mV.y = 200;	
 
 	isBoomed = false;
 }
 
 void missile::reMissile(int x, int y)
 {
-	int t = 0;
+	int count = 0;
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
 	{ 
 		Point2D pos, vel, acc, dis, fo;
 
-		x = mP.x;
-		y = mP.y;
-
-		if (t < 10)
+		if (count == 22)
 		{
-			pos.x = x;
-			pos.y = y - 13 - t * 3;
+			moi->setStartPosX(x);
+			moi->setStartPosY(y + 27);
 		}
 
-		if (t < 20 && t > 9)
+		if (count < 11)
 		{
-			pos.x = x + 3;
-			pos.y = y + 17 - t * 3;
+			moi->setStartPosX(x + 3);
+			moi->setStartPosY(y + (3 * count));
 		}
 
-		if (t == 20)
+		if (count < 22 && count > 10)
 		{
-			pos.x = x + 6;
-			pos.y = y + 20 - t * 3;
+			moi->setStartPosX(x + 6);
+			moi->setStartPosY(y + (3 * (count - 11)));
 		}
 		
-		if (t == 21)
+		if (count == 23)
 		{
-			pos.x = x - 3;
-			pos.y = y + 23 - t * 3;
-		}
-
-		if (t == 22)
-		{
-			pos.x = x;
-			pos.y = y + 23 - t * 3;
-		}
-
-		if (t == 23)
-		{
-			pos.x = x + 3;
-			pos.y = y + 26 - t * 3;
+			moi->setStartPosX(x + 9);
+			moi->setStartPosY(y + 27);
 		}
 		
-		t++;
+		count++;
 		moi++;		
 	}
 }

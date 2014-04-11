@@ -226,7 +226,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			
 			if (mi->getFired() == true && mi->getBoomed() == true)
 			{
-				mi->setMissileShape(veh->getBuggyX(), veh->getBuggyY());
+				mi->setMissileShape(veh->getBuggyX() + 14, veh->getBuggyY() - 33);
 			}
 			else
 			{
