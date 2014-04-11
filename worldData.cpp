@@ -68,7 +68,7 @@ WorldData::WorldData()
 
 	Point2D mV;
 	mV.x = 0;
-	mV.y = 150;
+	mV.y = -200;
 
 	mB.initBox(mP.x, mP.y, 12, 33);
 	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
