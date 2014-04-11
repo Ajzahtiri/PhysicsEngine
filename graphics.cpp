@@ -159,7 +159,7 @@ int GraphicsM::drawText()
 	SetTextColor(hMdc, 0x0000000);
 	SetBkMode(hMdc, TRANSPARENT);
 
-	DrawText(hMdc, "A - Buggy Left | D - Buggy Right", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
+	DrawText(hMdc, "A - Buggy Left | S - Buggy Shoot | D - Buggy Right", -1, &tr1, DT_SINGLELINE | DT_NOCLIP);
 	DrawText(hMdc, "Z - Start Snow | X - Stop Snow | C - Left Wind | V - Right Wind", -1, &tr2, DT_SINGLELINE | DT_NOCLIP);
 
 	return 1;
