@@ -12,28 +12,26 @@
 class particleModel
 {
 	protected:		
-		Point2D	position;
-		Point2D	displacement;
-		Point2D	velocity;
-		Point2D	acceleration;
-		Point2D	totalForce;
-		Point2D	startPos;		
+		Point2D	position, displacement, velocity, acceleration, totalForce, startPos;	
 		bool	isMoving;
 		float	mass;
+
+		float	w, h;
 		
 		boundingBox b;
 
 	public:		
-		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp);
+		particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp, float w, float h);
 		~particleModel(){};
 
-		void	setPos(float x, float y);		
-		void	checkWallCollisions(boundingBox *b);
+		void	setPos(float x, float y);	
+
 		Point2D getPos();
 		void	moveConstVel(double t);
 		void	moveConstAcc(double t);
 		void	updateAcc();
 
+		void	updateBox();
 		boundingBox getBb()
 		{
 			return b;

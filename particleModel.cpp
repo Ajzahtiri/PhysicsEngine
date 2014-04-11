@@ -2,7 +2,7 @@
 #include "definitions.h"
 #include "appearance.h"
 
-particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp)
+particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, float mas, Point2D f, Point2D sp, float ww, float hh)
 {
 	position = pos;
 	velocity = vel;
@@ -11,6 +11,10 @@ particleModel::particleModel(Point2D pos, Point2D vel, Point2D acc, bool mov, fl
 	mass = mas;
 	totalForce = f;
 	startPos = sp;
+	w = ww;
+	h = hh;
+
+	b.initBox(pos.x, pos.y, w, h);
 }
 
 int particleModel::worldDataModuleInit()
@@ -54,79 +58,7 @@ void particleModel::updateAcc()
 	}
 }
 
-void particleModel::checkWallCollisions(boundingBox * b)
+void particleModel::updateBox()
 {
-	Point2D pos = getPos();	
-
-	if (pos.x <= VIEWPORT_LEFT)
-	{
-		position.x = VIEWPORT_LEFT;
-		setVelX(-velocity.x);
-	}
-
-	if (pos.y <= VIEWPORT_UP)
-	{
-		position.y = VIEWPORT_UP;
-		setVelY(-velocity.y);
-	}
-
-	if (pos.x + b->getWidth() >= VIEWPORT_RIGHT)
-	{
-		position.x = VIEWPORT_RIGHT - b->getWidth();
-		setVelX(-velocity.x);
-	}
-
-	if (pos.y + b->getHeight() >= VIEWPORT_DOWN)
-	{
-		position.y = VIEWPORT_DOWN - b->getHeight();
-		setVelY(-velocity.y);
-	}	
+	b.initBox(position.x, position.y, w, h);
 }
-
-/*
-void particleModel::checkCollisions(boundingBox * b)
-{
-	for (int i = 0; i < 4; i++)
-	{
-		//checks right wall
-		if ((getPos().x + 10) > gm->getViewport().right)
-		{
-			setPos(640, getPos().y);
-			float xx = getVel().x;
-			xx *= -1;
-			setVel(xx, getVel().y);
-		}
-
-		//checks bottom		
-		if ((getPos().y + 10) > gm->getViewport().bottom)
-		{
-			setPos(getPos().x, 480);
-			float yy = getVel().y;
-			yy *= -1;
-			setVel(getVel().x, yy);
-		}
-
-		//check left wall
-		if (getPos().x < gm->getViewport().left)
-		{
-			setPos(10, getPos().y);
-			float xx = getVel().x;
-			xx *= -1;
-			setVel(xx, getVel().y);
-		}
-
-		//check top wall
-		if (getPos().y < gm->getViewport().top)
-		{
-			setPos(getPos().x, 10);
-			float yy = getVel().y;
-			yy *= -1;
-			setVel(getVel().x, yy);
-		}
-
-		//return true;
-	}
-	
-}
-
-*/

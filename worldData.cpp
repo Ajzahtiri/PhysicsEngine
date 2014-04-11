@@ -67,8 +67,8 @@ WorldData::WorldData()
 	mP.y = bp.y - 33;
 
 	Point2D mV;
-	mV.x = -50;
-	mV.y = -150;
+	mV.x = 0;
+	mV.y = 150;
 
 	mB.initBox(mP.x, mP.y, 12, 33);
 	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
@@ -79,7 +79,6 @@ int WorldData::worldDataModuleInit()
 {	
 	tickBefore = GetTickCount();
 
-	mi->squareTheMotes();
 	set = false;
 
 	return 1;
@@ -157,9 +156,17 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		{
 			if (s->getMoving())
 			{
+				s->updateBox();
 				s->updateAcc();
 				s->moveConstAcc(difference);
-				s->checkSnow(leftSlopeOneLeft, leftSlopeOneRight, leftSlopeOneTop);
+				
+				if (s->getBb().checkFlats())
+				{
+					s->resetParticle();
+					s->setAccX(0);
+					s->setAccY(0);
+					s->setVelY(1);
+				}
 			}
 			s++;
 		}
