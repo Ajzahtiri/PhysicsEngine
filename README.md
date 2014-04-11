@@ -14,7 +14,7 @@ features needed:
     chasing/tracking                  6
     swarming                          10
     path finding                      10
-    total                             6/30
+    total                             36/30
     
 
 other:
@@ -36,7 +36,7 @@ misc:
     inclusion of force (wind, drag)   10    ✔✔✔✔✔
     game like systems                 20
     other (graphics/threads)          10
-    total                             15/20
+    total                             25/20
     
     total                             61/100
     
