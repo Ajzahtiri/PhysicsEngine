@@ -25,37 +25,14 @@ void boundingBox::initBox(float xx, float yy, float w, float h)
 	brc.y = yy + height;
 }
 
-bool boundingBox::checkCollision(boundingBox b)
+bool boundingBox::checkFlats()
 {
-	if (b.getLeft() > left && b.getLeft() < right && b.getTop() > top && b.getTop() < bottom)
-	{
-		return true;
-	}
-
-	else if (b.getRight() > left && b.getRight() < right && b.getTop() > top && b.getTop() < bottom)
-	{
-		return true;
-	}
-
-	else if (b.getLeft() > left && b.getLeft() < right && b.getBottom() > top && b.getBottom() < bottom)
-	{
-		return true;
-	}
-
-	else if (b.getRight() > left && b.getRight() < right && b.getBottom() > top && b.getBottom() < bottom)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
-}
-
-bool boundingBox::checkFlatsCollision()
-{	
-	if(bottom >= VIEWPORT_DOWN)
+	if((bottom >= VIEWPORT_DOWN - 20 && (right >= VIEWPORT_LEFT && left <= 100)) 
+		|| (bottom >= VIEWPORT_DOWN - 80 && (right >= 290 && left <= 460))
+		|| (bottom >= VIEWPORT_DOWN - 120 && (right >= 180 && left <= 260))
+		|| (bottom >= VIEWPORT_DOWN - 180 && (right >= 530 && left <= VIEWPORT_RIGHT))
+		|| ((bottom >= VIEWPORT_DOWN - 350 && top <= VIEWPORT_DOWN - 345) && (right >= 0 && left <= 150))
+		|| top >= VIEWPORT_DOWN)
 	{		
 		return true;
 	}
@@ -65,7 +42,30 @@ bool boundingBox::checkFlatsCollision()
 	}
 }
 
-bool boundingBox::checkSlopeCollision(Point2D sl, Point2D sr, Point2D st)
+int boundingBox::checkWallCollisions()
+{
+	if (left <= VIEWPORT_LEFT)
+	{
+		return 1;
+	}
+
+	if (top <= VIEWPORT_UP)
+	{
+		return 2;
+	}
+
+	if (right >= VIEWPORT_RIGHT)
+	{
+		return 3;
+	}
+
+	if (bottom >= VIEWPORT_DOWN)
+	{
+		return 4;
+	}	
+}
+
+bool boundingBox::checkSlopes(Point2D sl, Point2D sr, Point2D st)
 {
 	bool b1 = false, b2 = false;
 	float a, b, c, d, e, f, g, h, i, j, k, l, m, n;
