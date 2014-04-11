@@ -176,19 +176,19 @@ int GraphicsM::drawBuggy(Point2D bp)
 	// left - top - right - bottom
 	bodyB = CreateSolidBrush(RGB(255, 204, 204));	
 	hpb = SelectObject(hMdc, bodyB);
-	Rectangle(hMdc, bp.x + 2, bp.y - 20, bp.x + 38, bp.y - 2);
+	Rectangle(hMdc, bp.x + 2, bp.y, bp.x + 38, bp.y + 18);
 	SelectObject(hMdc, hpb);
     DeleteObject(bodyB);
 
 	wheel1B = CreateSolidBrush(RGB(0, 0, 0));
 	hpb = SelectObject(hMdc, wheel1B);
-	Rectangle(hMdc, bp.x, bp.y, bp.x + 8, bp.y - 8);
+	Rectangle(hMdc, bp.x, bp.y + 12, bp.x + 8, bp.y + 20);
 	SelectObject(hMdc, hpb);
     DeleteObject(wheel1B);
 
 	wheel2B = CreateSolidBrush(RGB(0, 0, 0));
 	hpb = SelectObject(hMdc, wheel1B);
-	Rectangle(hMdc, bp.x + 32, bp.y, bp.x + 40, bp.y - 8);
+	Rectangle(hMdc, bp.x + 32, bp.y + 12, bp.x + 40, bp.y + 20);
 	SelectObject(hMdc, wheel1B);
     DeleteObject(wheel2B);
 

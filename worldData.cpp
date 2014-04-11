@@ -48,7 +48,7 @@ WorldData::WorldData()
 	//setup buggy
 	Point2D bp;
 	bp.x = 400;
-	bp.y = VIEWPORT_DOWN - 80;
+	bp.y = VIEWPORT_DOWN - 100;
 	veh = new buggy(bp);
 
 	//setup slopes
@@ -64,13 +64,13 @@ WorldData::WorldData()
 
 	Point2D mP;
 	mP.x = bp.x + 14;
-	mP.y = bp.y - 20;
+	mP.y = bp.y - 33;
 
 	Point2D mV;
 	mV.x = -50;
 	mV.y = -150;
 
-	mB.initBox(mP.x, mP.y, 12, -33);
+	mB.initBox(mP.x, mP.y, 12, 33);
 	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
 	mi->initMissile();
 }

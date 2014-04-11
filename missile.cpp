@@ -15,32 +15,32 @@ void missile::initMissile()
 	x = mP.x;
 	y = mP.y;
 
-	for (int i = 1; i < 25; i++)
+	for (int i = 0; i < 24; i++)
 	{
 		Point2D pos, vel, acc, dis, fo;
 
-		if (i == 23)
+		if (i == 22)
 		{
 			pos.x = x;
-			pos.y = y - 6;
+			pos.y = y + 27;
 		}
 
-		if (i < 12)
+		if (i < 11)
 		{
 			pos.x = x + 3;
-			pos.y = y - (3 * i);
+			pos.y = y + (3 * i);
 		}
 
-		if (i < 23 && i > 11)
+		if (i < 22 && i > 10)
 		{
 			pos.x = x + 6;
-			pos.y = y - (3 * (i - 11));
+			pos.y = y + (3 * (i - 11));
 		}				
 
-		if (i == 24)
+		if (i == 23)
 		{
 			pos.x = x + 9;
-			pos.y = y - 6;
+			pos.y = y + 27;
 		}
 		
 		dis.x = 0;
@@ -71,7 +71,7 @@ void missile::squareTheMotes()
 
 void missile::drawMissile(GraphicsM * pGraphicsModule)
 {
-	mB.initBox(mP.x, mP.y, 12, -33);
+	mB.initBox(mP.x, mP.y, 12, 33);
 
 	std::vector<mote>::iterator moi = moteSplosion.begin();
 	while (moi != moteSplosion.end())
@@ -108,12 +108,12 @@ void missile::moveConstAcc(double t)
 
 void missile::updateMissile(double t)
 {
-	mB.initBox(mP.x, mP.y, 12, -33);
+	mB.initBox(mP.x, mP.y, 12, 33);
 
 	if (isFired == true)
 	{
 		moveConstAcc(t);
-		mB.initBox(mP.x, mP.y, 12, -33);
+		mB.initBox(mP.x, mP.y, 12, 33);
 		std::vector<mote>::iterator moi = moteSplosion.begin();
 		while (moi != moteSplosion.end())
 		{
@@ -132,7 +132,7 @@ void missile::updateMissile(double t)
 		}
 	}
 
-	mB.initBox(mP.x, mP.y, 12, -33);
+	mB.initBox(mP.x, mP.y, 12, 33);
 }
 
 void missile::checkCollision()
@@ -142,7 +142,7 @@ void missile::checkCollision()
 	{
 		if (isBoomed == false)
 		{
-			mB.initBox(mP.x, mP.y, 12, -33);
+			mB.initBox(mP.x, mP.y, 12, 33);
 			if (mB.checkFlatsCollision())
 			{
 				explodeMissile();
