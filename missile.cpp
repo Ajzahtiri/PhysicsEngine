@@ -59,16 +59,6 @@ void missile::initMissile()
 	}
 }
 
-void missile::squareTheMotes()
-{
-	std::vector<mote>::iterator moi = moteSplosion.begin();
-	while (moi != moteSplosion.end())
-	{
-		moi->setShape2Square();
-		moi++;
-	}
-}
-
 void missile::drawMissile(GraphicsM * pGraphicsModule)
 {
 	mB.initBox(mP.x, mP.y, 12, 33);
@@ -108,8 +98,6 @@ void missile::moveConstAcc(double t)
 
 void missile::updateMissile(double t)
 {
-	mB.initBox(mP.x, mP.y, 12, 33);
-
 	if (isFired == true)
 	{
 		moveConstAcc(t);
@@ -117,6 +105,7 @@ void missile::updateMissile(double t)
 		std::vector<mote>::iterator moi = moteSplosion.begin();
 		while (moi != moteSplosion.end())
 		{
+			moi->updateBox();
 			moi->updateAcc();
 			moi->moveConstAcc(t);
 			moi++;
@@ -136,23 +125,26 @@ void missile::updateMissile(double t)
 }
 
 void missile::checkCollision()
-{
-	std::vector<mote>::iterator moi = moteSplosion.begin();
-	while (moi != moteSplosion.end())
+{	
+	if (isBoomed == false)
 	{
-		if (isBoomed == false)
+		std::vector<mote>::iterator moi = moteSplosion.begin();
+	
+		while (moi != moteSplosion.end())
 		{
-			mB.initBox(mP.x, mP.y, 12, 33);
-			if (mB.checkFlatsCollision())
+			moi->updateBox();
+
+			if (moi->getBb().checkFlats())
 			{
 				explodeMissile();
 			}
-		}
-		else 
-		{
 
-		}
-		moi++;
+			else 
+			{
+
+			}
+			moi++;
+		}			
 	}
 }
 
@@ -165,7 +157,7 @@ void missile::explodeMissile()
 	while (moi != moteSplosion.end())
 	{
 		float x = rand() % 300 + 1;
-		float y = rand() % 300 + 1;
+		float y = rand() % 200 + 1;
 		float n = rand() % 2 + 1;
 
 		if (n == 1)
@@ -176,7 +168,7 @@ void missile::explodeMissile()
 		{
 			moi->setVelX(x);
 		}
-		moi->setVelY(y);
+		moi->setVelY(-y);
 		moi++;
 	}
 }
@@ -207,8 +199,8 @@ void missile::setMissileShape(int x, int y)
 	mP.y = y;
 	mA.x = 0;
 	mA.y = 0;
-	mV.x = -100;
-	mV.y = -200;
+	mV.x = 0;
+	mV.y = 200;
 
 	isBoomed = false;
 }

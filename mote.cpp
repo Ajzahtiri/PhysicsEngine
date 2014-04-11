@@ -1,9 +1,9 @@
 #include "mote.h"
 
 mote::mote(Point2D p, Point2D v, Point2D a, bool m, float m2, Point2D f, Point2D sp)
-	: particleModel(p, v, a, m, m2, f, sp)
+	: particleModel(p, v, a, m, m2, f, sp, 2, 2)
 {
-
+	setShape2Square();
 }
 
 void mote::setShape2Square()

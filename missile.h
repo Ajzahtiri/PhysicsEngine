@@ -31,7 +31,6 @@ public:
 
 	void	initMissile();
 	void	setMissileShape(int x, int y);
-	void	squareTheMotes();
 	void	updateAcc();
 	void	updateMissile(double t);
 	void	moveConstAcc(double t);
@@ -44,6 +43,10 @@ public:
 	void	moveMissileRight();
 	bool	isMissileGone();
 	void	reMissile(int x, int y);
+	Point2D	getPos()
+	{
+		return mP;
+	}
 
 	boundingBox getBb()
 	{
