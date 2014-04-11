@@ -8,9 +8,9 @@ features needed:
     snow falling!                     6     ✔✔✔✔✔
     friction/drag motion              10
     sliding motion on a plane         10
-    projectile motion (w/ gravity)    10
-    collision response                10
-      w/ particle system              10
+    projectile motion (w/ gravity)    10    ✔✔✔✔✔
+    collision response                10    ✔✔✔✔✔
+      w/ particle system              10    ✔✔✔✔✔
     chasing/tracking                  6
     swarming                          10
     path finding                      10
@@ -31,12 +31,12 @@ report:
     
     
 misc:
-    data structures                   10
+    data structures                   10    ✔✔✔✔✔
     collision detection               5     ✔✔✔✔✔
     inclusion of force (wind, drag)   10    ✔✔✔✔✔
     game like systems                 20
     other (graphics/threads)          10
     total                             15/20
     
-    total                             21/100
+    total                             61/100
     
