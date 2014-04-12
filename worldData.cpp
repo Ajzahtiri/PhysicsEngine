@@ -193,15 +193,11 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 
 	
 	//update missile
-	if (mi->getBb().checkSlopes(leftSlopeTop, leftSlopeLeft, leftSlopeRight))
-	{
-		mi->explodeMissile();
-	}
-
 	if (mi->getFired() == true)
 	{
 		mi->updateMissile(difference);
-		mi->checkCollision();
+		mi->checkCollision(leftSlopeLeft, leftSlopeRight, leftSlopeTop, rightSlopeLeft, rightSlopeRight,
+			rightSlopeTop, castleSlopeLeft, castleSlopeRight, castleSlopeTop);
 	}
 
 	//check keyboard for user input

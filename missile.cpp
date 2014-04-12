@@ -124,7 +124,7 @@ void missile::updateMissile(double t)
 	mB.initBox(mP.x, mP.y, 12, 33);
 }
 
-void missile::checkCollision()
+void missile::checkCollision(Point2D lsl, Point2D lsr, Point2D lst, Point2D rsl, Point2D rsr, Point2D rst, Point2D csl, Point2D csr, Point2D cst)
 {	
 	if (isBoomed == false)
 	{
@@ -134,11 +134,13 @@ void missile::checkCollision()
 		{
 			moi->updateBox();
 
-			if (moi->getBb().checkFlats())
+			if (moi->getBb().checkFlats()
+				|| moi->getBb().checkSlopes(lst, lsl, lsr)
+				|| moi->getBb().checkSlopes(rst, rsl, rsr)
+				|| moi->getBb().checkSlopes(cst, csl, csr))
 			{
 				explodeMissile();
 			}
-
 			else 
 			{
 

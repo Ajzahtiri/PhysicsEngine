@@ -36,7 +36,7 @@ public:
 	void	moveConstAcc(double t);
 	void	drawMissile(GraphicsM * pGraphicsModule);	
 
-	void	checkCollision();
+	void	checkCollision(Point2D lsl, Point2D lsr, Point2D lst, Point2D rsl, Point2D rsr, Point2D rst, Point2D csl, Point2D csr, Point2D cst);
 	void	explodeMissile();
 
 	void	moveMissileLeft();
