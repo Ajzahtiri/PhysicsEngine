@@ -52,12 +52,12 @@ WorldData::WorldData()
 	veh = new buggy(bp);
 
 	//setup slopes
-	leftSlopeOneLeft.x = 100;
-	leftSlopeOneLeft.y = VIEWPORT_DOWN - 20;
-	leftSlopeOneRight.x = 180;
-	leftSlopeOneRight.y = VIEWPORT_DOWN - 20;
-	leftSlopeOneTop.x = 180;
-	leftSlopeOneTop.y = VIEWPORT_DOWN - 120;
+	leftSlopeLeft.x = 100;
+	leftSlopeLeft.y = VIEWPORT_DOWN - 20;
+	leftSlopeRight.x = 180;
+	leftSlopeRight.y = VIEWPORT_DOWN - 20;
+	leftSlopeTop.x = 180;
+	leftSlopeTop.y = VIEWPORT_DOWN - 120;
 
 	//setup missile/motes
 	fired = false;
@@ -167,6 +167,14 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 					s->setAccY(0);
 					s->setVelY(1);
 				}
+
+				if (s->getBb().checkSlopes(leftSlopeTop, leftSlopeLeft, leftSlopeRight))
+				{
+					s->resetParticle();
+					s->setAccX(0);
+					s->setAccY(0);
+					s->setVelY(1);
+				}
 			}
 			s++;
 		}
@@ -176,6 +184,11 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 
 	
 	//update missile
+	if (mi->getBb().checkSlopes(leftSlopeTop, leftSlopeLeft, leftSlopeRight))
+	{
+		mi->explodeMissile();
+	}
+
 	if (mi->getFired() == true)
 	{
 		mi->updateMissile(difference);

@@ -29,7 +29,8 @@ private:
 	buggy * veh;
 
 	//slopes
-	Point2D leftSlopeOneLeft, leftSlopeOneTop, leftSlopeOneRight;
+	Point2D leftSlopeLeft, leftSlopeTop, leftSlopeRight
+		;
 	Point2D rightSlopeTwoLeft, rightSlopeTwoTop, rightSlopeTwoRight;
 
 	//missile/motes

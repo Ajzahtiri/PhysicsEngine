@@ -65,7 +65,7 @@ int boundingBox::checkWallCollisions()
 	}	
 }
 
-bool boundingBox::checkSlopes(Point2D sl, Point2D sr, Point2D st)
+bool boundingBox::checkSlopes(Point2D st, Point2D sl, Point2D sr)
 {
 	bool b1 = false, b2 = false;
 	float a, b, c, d, e, f, g, h, i, j, k, l, m, n;
