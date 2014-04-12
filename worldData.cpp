@@ -59,6 +59,20 @@ WorldData::WorldData()
 	leftSlopeTop.x = 180;
 	leftSlopeTop.y = VIEWPORT_DOWN - 120;
 
+	rightSlopeLeft.x = 260;
+	rightSlopeLeft.y = VIEWPORT_DOWN - 80;
+	rightSlopeRight.x = 290;
+	rightSlopeRight.y = VIEWPORT_DOWN - 80;
+	rightSlopeTop.x = 260;
+	rightSlopeTop.y = VIEWPORT_DOWN - 120;
+
+	castleSlopeLeft.x = 460;
+	castleSlopeLeft.y = VIEWPORT_DOWN - 80;
+	castleSlopeRight.x = 530;
+	castleSlopeRight.y = VIEWPORT_DOWN - 80;
+	castleSlopeTop.x = 530;
+	castleSlopeTop.y = VIEWPORT_DOWN - 180;
+
 	//setup missile/motes
 	fired = false;
 
@@ -160,15 +174,10 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 				s->updateAcc();
 				s->moveConstAcc(difference);
 				
-				if (s->getBb().checkFlats())
-				{
-					s->resetParticle();
-					s->setAccX(0);
-					s->setAccY(0);
-					s->setVelY(1);
-				}
-
-				if (s->getBb().checkSlopes(leftSlopeTop, leftSlopeLeft, leftSlopeRight))
+				if (s->getBb().checkFlats() 
+					|| s->getBb().checkSlopes(leftSlopeTop, leftSlopeLeft, leftSlopeRight)
+					|| s->getBb().checkSlopes(rightSlopeTop, rightSlopeLeft, rightSlopeRight)
+					|| s->getBb().checkSlopes(castleSlopeTop, castleSlopeLeft, castleSlopeRight))
 				{
 					s->resetParticle();
 					s->setAccX(0);

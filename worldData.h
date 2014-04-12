@@ -29,12 +29,10 @@ private:
 	buggy * veh;
 
 	//slopes
-	Point2D leftSlopeLeft, leftSlopeTop, leftSlopeRight
-		;
-	Point2D rightSlopeTwoLeft, rightSlopeTwoTop, rightSlopeTwoRight;
+	Point2D leftSlopeLeft, leftSlopeTop, leftSlopeRight, rightSlopeLeft, rightSlopeTop, rightSlopeRight, castleSlopeLeft, castleSlopeRight, castleSlopeTop;
 
 	//missile/motes
-	missile* mi;
+	missile * mi;
 	bool fired, isFiring, set;
 	boundingBox mB;
 	
