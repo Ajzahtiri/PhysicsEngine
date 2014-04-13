@@ -49,7 +49,7 @@ keyEvent Input::checkUserInput(HWND hWnd)
 	{
 		event = C;
 	}
-
+	
 	else if (IS_KEY_DOWN(0x56))
 	{
 		event = V;

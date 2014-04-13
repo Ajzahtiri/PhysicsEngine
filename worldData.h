@@ -16,6 +16,7 @@ class WorldData
 private:
 	//world
 	Point2D gravity;
+	bool fired, isFiring, set;
 
 	//time
 	double tickBefore;
@@ -33,7 +34,6 @@ private:
 
 	//missile/motes
 	missile * mi;
-	bool fired, isFiring, set;
 	boundingBox mB;
 	
 	// Dynamics parameters (for physics simulation) 

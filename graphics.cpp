@@ -147,12 +147,12 @@ int GraphicsM::drawText()
 {
 	RECT tr1;
 	RECT tr2;
-	tr1.left = 10;
-	tr1.top = 10;
+	tr1.left = 160;
+	tr1.top = 440;
 	tr1.right = 100;
 	tr1.bottom = 100;
-	tr2.left = 10;
-	tr2.top = 30;
+	tr2.left = 160;
+	tr2.top = 460;
 	tr2.right = 100;
 	tr2.bottom = 100;
 

@@ -170,6 +170,7 @@ void missile::explodeMissile()
 		{
 			moi->setVelX(x);
 		}
+
 		moi->setVelY(-y);
 		moi++;
 	}

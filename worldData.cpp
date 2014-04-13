@@ -25,6 +25,8 @@ WorldData::WorldData()
 	emptyVel.x = 0;
 	emptyVel.y = 0;
 
+	
+
 	//setup snowfall	
 	isSnowing = true;
 	for (int i = 0; i < 1000; i++)
