@@ -19,3 +19,9 @@ void buggy::moveRight()
 {
 	position.x += 1;
 }
+
+void buggy::updateBox()
+{
+	b.initBox(getBuggyX(), getBuggyY(), 40, 30);
+
+}

@@ -24,6 +24,7 @@ public:
 	{
 		return b;
 	}
+	void updateBox();
 
 	void	moveLeft();
 	void	moveRight();

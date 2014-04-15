@@ -23,9 +23,7 @@ WorldData::WorldData()
 
 	Point2D emptyVel;
 	emptyVel.x = 0;
-	emptyVel.y = 0;
-
-	
+	emptyVel.y = 0;	
 
 	//setup snowfall	
 	isSnowing = true;
@@ -89,7 +87,26 @@ WorldData::WorldData()
 	mB.initBox(mP.x, mP.y, 12, 33);
 	mi = new missile(mP, mV, emptyAcc, 0.1f, gravity, mB);
 	mi->initMissile();
+
+	//setup swarm/ees
+	Point2D sp;
+	sp.x = sp.y = 20;
+
+	Point2D sv;
+	sv.x = 1;
+	sv.y = 0;
+
+	Point2D sa;
+	sa.x = sa.y = 0;
+
+	Point2D sf;
+	sf.x = sf.y = 0;
+
+	theSwarm = new swarm(sp, sv, sa, true, 1, sf, sp, 100, 100);
+	theSwarm->b = new boundingBox();
+	theSwarm->b->initBox(sp.x, sp.y, 100, 100);
 }
+
 
 int WorldData::worldDataModuleInit()
 {	
@@ -202,6 +219,24 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 			rightSlopeTop, castleSlopeLeft, castleSlopeRight, castleSlopeTop);
 	}
 
+	//update swarm/ees
+	theSwarm->update(veh->getBb());
+
+	if (theSwarm->collisionTank(veh->getBb()))
+	{
+		veh->updateBox();
+
+		float y = rand() % 10 + VIEWPORT_RIGHT;
+		theSwarm->setPosX(y);
+		theSwarm->setPosY(10);
+
+		theSwarm->setVelX(0);
+		theSwarm->setVelY(0);
+		veh->updateBox();
+
+		
+	}
+
 	//check keyboard for user input
 	switch(kEvent)
 	{
@@ -276,6 +311,8 @@ int WorldData::draw(GraphicsM * pGraphicsModule)
 
 	veh->initBuggy(pGraphicsModule);
 	pGraphicsModule->drawText();
+
+	theSwarm->updateSwarmees(pGraphicsModule);
 
 	return 1;
 }

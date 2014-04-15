@@ -7,6 +7,7 @@
 #include	"snowball.h"
 #include	"buggy.h"
 #include	"missile.h"
+#include	"swarm.h"
 #include	<list>
 #include	"input.h"			/* include file for user input module */
 
@@ -20,6 +21,9 @@ private:
 
 	//time
 	double tickBefore;
+
+	//swarm/ees
+	swarm * theSwarm;
 
 	//snow
 	std::list<snowball> snowfall;
