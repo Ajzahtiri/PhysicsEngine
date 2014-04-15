@@ -21,6 +21,7 @@ class boundingBox
 		bool	checkSlopes(Point2D sl, Point2D sr, Point2D st);
 		int		checkWallCollisions();		
 		bool	checkFlats();
+		bool	checkIntersect(boundingBox b);
 
 		void	setX(float xx)
 		{

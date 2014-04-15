@@ -139,3 +139,26 @@ bool boundingBox::checkSlopes(Point2D st, Point2D sl, Point2D sr)
 		}
 	}
 }
+
+bool boundingBox::checkIntersect(boundingBox b)
+{
+	if (b.getLeft() > left && b.getLeft() < right && b.getTop() > top && b.getTop() < bottom)
+	{
+		return true;
+	}
+
+	else if (b.getRight() > left && b.getRight() < right && b.getTop() > top && b.getTop() < bottom)
+	{
+		return true;
+	}
+
+	else if (b.getLeft() > left && b.getLeft() < right && b.getBottom() > top && b.getBottom() < bottom)
+	{
+		return true;
+	}
+
+	else if (b.getRight() > left && b.getRight() < right && b.getBottom() > top && b.getBottom() < bottom)
+	{
+		return true;
+	}
+}

@@ -166,16 +166,3 @@ int Simulation::simDisplayFrame(HWND hWnd)
 	return 1;
 }
 
-/*
-void Simulation::gameLoopDelay(float floatStartTime)
-{
-	presentFrameInterval = 40;
-
-	frameProcessingTime = GetTickCount() - frameStartTime;
-
-	if (frameProcessingTime < presentFrameInterval)
-	{
-		Sleep(presentFrameInterval - frameProcessingTime);
-	}
-}
-*/
