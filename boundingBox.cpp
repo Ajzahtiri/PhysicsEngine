@@ -42,7 +42,7 @@ bool boundingBox::checkFlats()
 	}
 }
 
-int boundingBox::checkWallCollisions()
+int boundingBox::checkWallCollisionsInt()
 {
 	if (left <= VIEWPORT_LEFT)
 	{
@@ -63,6 +63,34 @@ int boundingBox::checkWallCollisions()
 	{
 		return 4;
 	}	
+}
+
+bool boundingBox::checkWallCollisionsBool()
+{
+	if (left <= VIEWPORT_LEFT)
+	{
+		return true;
+	}
+
+	if (top <= VIEWPORT_UP)
+	{
+		return true;
+	}
+
+	if (right >= VIEWPORT_RIGHT)
+	{
+		return true;
+	}
+
+	if (bottom >= VIEWPORT_DOWN)
+	{
+		return true;
+	}	
+
+	else
+	{
+		return false;
+	}
 }
 
 bool boundingBox::checkSlopes(Point2D st, Point2D sl, Point2D sr)

@@ -24,6 +24,7 @@ public:
 	//bool collisionMissile(boundingBox mBox);	
 
 	void swarmAway();
+	void	flipX();
 };
 
 #endif

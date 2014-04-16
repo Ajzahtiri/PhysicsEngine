@@ -232,9 +232,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 
 		theSwarm->setVelX(0);
 		theSwarm->setVelY(0);
-		veh->updateBox();
-
-		
+		veh->updateBox();		
 	}
 
 	//check keyboard for user input

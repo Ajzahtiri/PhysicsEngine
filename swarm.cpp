@@ -68,10 +68,9 @@ void swarm::swarmAway()
 
 void swarm::update(boundingBox bBox)
 {
-	b->checkWallCollisions();
-	chaseBuggy(bBox);
+	//chaseBuggy(bBox);
 	b->initBox(getPosX(), getPosY(), b->getWidth(), b->getHeight());
-	moveConstAcc(0.2);
+	//moveConstAcc(0.2);
 	swarmAway();
 }
 
@@ -147,4 +146,3 @@ bool swarm::collisionTank(boundingBox bBox)
 		return false;
 	}
 }
-
