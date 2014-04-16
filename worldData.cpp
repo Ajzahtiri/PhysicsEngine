@@ -93,7 +93,7 @@ WorldData::WorldData()
 	sp.x = sp.y = 20;
 
 	Point2D sv;
-	sv.x = 1;
+	sv.x = 0;
 	sv.y = 0;
 
 	Point2D sa;
@@ -222,7 +222,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 	//update swarm/ees
 	theSwarm->update(veh->getBb());
 
-	if (theSwarm->collisionTank(veh->getBb()))
+	/*if (theSwarm->collisionTank(veh->getBb()))
 	{
 		veh->updateBox();
 
@@ -233,7 +233,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		theSwarm->setVelX(0);
 		theSwarm->setVelY(0);
 		veh->updateBox();		
-	}
+	}*/
 
 	//check keyboard for user input
 	switch(kEvent)
