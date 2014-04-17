@@ -12,9 +12,9 @@ features needed:
     collision response                10    ✔✔✔✔✔
       w/ particle system              10    ✔✔✔✔✔
     chasing/tracking                  6
-    swarming                          10
+    swarming                          10    ✔✔✔✔✔
     path finding                      10
-    total                             36/30
+    total                             46/30
     
 
 other:
@@ -38,5 +38,5 @@ misc:
     other (graphics/threads)          10
     total                             25/20
     
-    total                             61/100
+    total                             71/100
     
