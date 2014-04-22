@@ -138,21 +138,3 @@ void swarmee::swarmeeAway(boundingBox swBox)
 		setVelY(-getVelX());
 	}	
 }
-
-void swarmee::stanceChange(boundingBox * swBox, boundingBox bBox, boundingBox * pBox)
-{
-	swarmeeAway(*swBox);
-
-	ip = pBox->checkIntersect(bBox);
-
-	if (ip)
-	{
-		state = CHASE;
-	}
-	else 
-	{
-		state = PATROL;
-	}
-
-	stateManagement(bBox, swBox);
-}

@@ -81,7 +81,7 @@ WorldData::WorldData()
 	mP.y = bp.y - 33;
 
 	Point2D mV;
-	mV.x = 0;
+	mV.x = 20;
 	mV.y = -200;
 
 	mB.initBox(mP.x, mP.y, 12, 33);
@@ -251,7 +251,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		windRight();
 		break;
 	case A:
-		if (veh->getBuggyX() > VIEWPORT_LEFT)
+		if (veh->getBuggyX() > 290 )
 		{
 			veh->moveLeft();
 
@@ -262,7 +262,7 @@ int WorldData::update(keyEvent kEvent, GraphicsM * pGraphicsModule, float time)
 		}
 		break;		
 	case D:
-		if (veh->getBuggyX() + veh->getBb().getWidth() < VIEWPORT_RIGHT)
+		if (veh->getBuggyX() + 40 < 460)
 		{
 			veh->moveRight();
 

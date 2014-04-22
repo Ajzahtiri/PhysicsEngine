@@ -38,7 +38,6 @@ public:
 	void	updateSwarmee(boundingBox bBox);
 	void	stateManagement(boundingBox bBox, boundingBox * swBox);
 	void	swarmeeAway(boundingBox swBox);
-	void	stanceChange(boundingBox * swBox, boundingBox bBox, boundingBox * pBox);
 	
 
 };

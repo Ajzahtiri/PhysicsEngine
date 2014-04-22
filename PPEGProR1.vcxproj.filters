@@ -56,7 +56,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="boundingBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="buggy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="dataTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="graphics.h">
@@ -65,22 +74,16 @@
     <ClInclude Include="input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="simulation.h">
+    <ClInclude Include="missile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="winApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="worldData.h">
+    <ClInclude Include="mote.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="particleModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="definitions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="boundingBox.h">
+    <ClInclude Include="simulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snowball.h">
@@ -92,13 +95,10 @@
     <ClInclude Include="swarmee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="buggy.h">
+    <ClInclude Include="winApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mote.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="missile.h">
+    <ClInclude Include="worldData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -45,7 +45,7 @@ void missile::initMissile()
 		
 		dis.x = 0;
 		dis.y = 0;
-		vel.x = 0;
+		vel.x = 40;
 		vel.y = -200;
 		acc.x = 0;
 		acc.y = 0;
@@ -189,7 +189,7 @@ void missile::setMissileShape(int x, int y)
 		moi->resetParticle();
 		moi->setMoving(false);
 
-		moi->setVelX(0);
+		moi->setVelX(40);
 		moi->setVelY(-200);
 
 		moi++;
@@ -200,7 +200,7 @@ void missile::setMissileShape(int x, int y)
 	mA.x = 0;
 	mA.y = 0;
 	mV.x = 0;
-	mV.y = 200;	
+	mV.y = 0;	
 
 	isBoomed = false;
 }
